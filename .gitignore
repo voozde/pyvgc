@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Build artifacts
+build/
+dist/
+
+# Packaging configuration kept out of this GitHub repository
+pyproject.toml
+
+# Local environments and editor/OS files
+.venv/
+venv/
+.DS_Store
+.vscode/
+.idea/
+.env
+.env.*
+!.env.example
+*.pem
+*.key

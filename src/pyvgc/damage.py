@@ -1,0 +1,243 @@
+"""Pokémon Champions damage calculation for level-50 Pokémon."""
+
+from __future__ import annotations
+
+from fractions import Fraction
+from typing import TYPE_CHECKING, Iterable, TypedDict
+
+from .battle_logic import BattleLogic, CARTRIDGE_CHAMPIONS_RELEASE_2026
+from .constants import TYPES
+
+if TYPE_CHECKING:
+    from .pokemon import Pokemon
+
+SPREAD_MULTIPLIER = Fraction(3, 4)
+HELPING_HAND_MULTIPLIER = Fraction(3, 2)
+
+
+class DamageRolls(TypedDict, total=False):
+    """Mapping returned by damage calculations."""
+
+    normal: list[int]
+    critical: list[int]
+    normal_percentage: list[float]
+    critical_percentage: list[float]
+
+
+def _normalize_type(type_name: str) -> str:
+    """Validate and canonicalize one Pokémon type name."""
+    if not isinstance(type_name, str):
+        raise ValueError(f"type names must be strings, got {type(type_name).__name__}")
+    normalized = type_name.strip().title()
+    if normalized not in TYPES:
+        raise ValueError(f"unknown Pokémon type: {type_name!r}")
+    return normalized
+
+
+def _type_multiplier_for_types(
+    move_type: str, defender_types: tuple[str, ...], logic: BattleLogic
+) -> Fraction:
+    """Return effectiveness for already-normalized defender types."""
+    if logic.type_chart is None:
+        raise ValueError(f"battle logic {logic.name!r} has no type chart")
+    multiplier = Fraction(1)
+    for defender_type in defender_types:
+        multiplier *= logic.type_chart[move_type][defender_type]
+    return multiplier
+
+
+def _type_multiplier(
+    move_type: str, defender_types: Iterable[str], logic: BattleLogic
+) -> Fraction:
+    """Normalize types and return their combined effectiveness multiplier."""
+    normalized_move = _normalize_type(move_type)
+    normalized_defenders = tuple(
+        _normalize_type(defender_type) for defender_type in defender_types
+    )
+    return _type_multiplier_for_types(
+        normalized_move, normalized_defenders, logic
+    )
+
+
+def _screen_multiplier(
+    logic: BattleLogic,
+    critical: bool,
+    special: bool,
+    light_screen: bool,
+    reflect: bool,
+    aurora_veil: bool,
+) -> Fraction:
+    """Return the one applicable screen multiplier for a damage roll."""
+    if critical:
+        return Fraction(1)
+    screen_active = (
+        aurora_veil
+        or special and light_screen
+        or not special and reflect
+    )
+    return logic.screen_multiplier if screen_active else Fraction(1)
+
+
+def damage_rolls(
+    power: int,
+    attack: int,
+    defense: int,
+    move_type: str,
+    attacker_types: Iterable[str],
+    defender_types: Iterable[str],
+    logic: BattleLogic,
+    special: bool = False,
+    light_screen: bool = False,
+    reflect: bool = False,
+    aurora_veil: bool = False,
+    helping_hand: bool = False,
+    spread: bool = False,
+) -> DamageRolls:
+    """Return all 16 normal and 16 critical damage rolls.
+
+    ``attack`` and ``defense`` are the already-calculated battle stats.
+    Damage is floored at every formula step, as in the games. Critical hits
+    use the selected logic's critical multiplier and ignore the relevant stat
+    stages. Modifier flags are disabled by default; ``spread=False`` represents
+    a single-target move.
+    """
+    if not all(
+        type(value) is int and value > 0
+        for value in (power, attack, defense)
+    ):
+        raise ValueError("power, attack, and defense must be positive integers")
+    move_type = _normalize_type(move_type)
+    attacker_types = tuple(
+        _normalize_type(type_name) for type_name in attacker_types
+    )
+    defender_types = tuple(
+        _normalize_type(type_name) for type_name in defender_types
+    )
+    if not attacker_types or not defender_types:
+        raise ValueError("attacker_types and defender_types must not be empty")
+    if len(attacker_types) > 2 or len(defender_types) > 2:
+        raise ValueError("a Pokémon can have at most two types")
+    stab = logic.stab_multiplier if move_type in attacker_types else Fraction(1)
+    effectiveness = _type_multiplier(move_type, defender_types, logic)
+
+    # (((((2L/5)+2) * Power * A / D) / 50) + 2), with integer floors.
+    base = (
+        (
+            (2 * logic.level // logic.damage_level_divisor + 2)
+            * power
+            * attack
+            // defense
+        )
+        // logic.damage_divisor
+    ) + 2
+    if helping_hand:
+        base = int((base - 2) * HELPING_HAND_MULTIPLIER) + 2
+    if spread:
+        base = int(base * SPREAD_MULTIPLIER)
+
+    def rolls(critical: bool) -> list[int]:
+        """Calculate all 16 random outcomes for one hit category."""
+        result: list[int] = []
+        critical_damage = int(base * logic.critical_multiplier) if critical else base
+        screen_multiplier = _screen_multiplier(
+            logic,
+            critical=critical,
+            special=special,
+            light_screen=light_screen,
+            reflect=reflect,
+            aurora_veil=aurora_veil,
+        )
+        for random_percent in logic.random_percentages:
+            fixed = critical_damage * random_percent // 100
+            fixed = int(fixed * stab)
+            fixed = int(fixed * effectiveness)
+            if not critical:
+                fixed = int(fixed * screen_multiplier)
+            result.append(fixed)
+        return result
+
+    return {"normal": rolls(False), "critical": rolls(True)}
+
+
+def calculate_damage(
+    attacker: "Pokemon",
+    defender: "Pokemon",
+    power: int,
+    move_type: str,
+    special: bool = False,
+    percentage: bool = True,
+    light_screen: bool = False,
+    reflect: bool = False,
+    aurora_veil: bool = False,
+    helping_hand: bool = False,
+    spread: bool = False,
+) -> DamageRolls:
+    """Calculate damage rolls using two Pokémon and their current battle state.
+
+    The Pokémon models provide state only. This function owns the damage
+    calculation, including critical-hit stat-stage handling and percentages.
+    Modifier flags are disabled by default. ``spread=False`` represents a
+    single-target move.
+    """
+    from .pokemon import Pokemon
+
+    if not isinstance(attacker, Pokemon) or not isinstance(defender, Pokemon):
+        raise TypeError("attacker and defender must be Pokemon instances")
+    if attacker.battle_logic is not defender.battle_logic:
+        raise ValueError("attacker and defender must use the same battle logic")
+
+    attack_stat = "special_attack" if special else "attack"
+    defense_stat = "special_defense" if special else "defense"
+    attack = getattr(attacker, attack_stat)
+    defense = getattr(defender, defense_stat)
+    rolls = damage_rolls(
+        power,
+        attack,
+        defense,
+        move_type,
+        attacker.types,
+        defender.types,
+        logic=attacker.battle_logic,
+        special=special,
+        light_screen=light_screen,
+        reflect=reflect,
+        aurora_veil=aurora_veil,
+        helping_hand=helping_hand,
+        spread=spread,
+    )
+    critical_attack = (
+        attacker._pre_stage_stats[attack_stat]
+        if attacker._stat_stages.get(attack_stat, 0) < 0
+        else attack
+    )
+    critical_defense = (
+        defender._pre_stage_stats[defense_stat]
+        if defender._stat_stages.get(defense_stat, 0) > 0
+        else defense
+    )
+    if critical_attack != attack or critical_defense != defense:
+        rolls["critical"] = damage_rolls(
+            power,
+            critical_attack,
+            critical_defense,
+            move_type,
+            attacker.types,
+            defender.types,
+            logic=attacker.battle_logic,
+            special=special,
+            light_screen=light_screen,
+            reflect=reflect,
+            aurora_veil=aurora_veil,
+            helping_hand=helping_hand,
+            spread=spread,
+        )["critical"]
+    if percentage:
+        rolls["normal_percentage"] = [
+            round(damage / defender.hp * 100, 2)
+            for damage in rolls["normal"]
+        ]
+        rolls["critical_percentage"] = [
+            round(damage / defender.hp * 100, 2)
+            for damage in rolls["critical"]
+        ]
+    return rolls

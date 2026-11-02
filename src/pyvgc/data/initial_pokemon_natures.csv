@@ -1,0 +1,26 @@
+Nature,RaisedStat,LoweredStat
+Hardy,Attack,Attack
+Lonely,Attack,Defense
+Brave,Attack,Speed
+Adamant,Attack,Special Attack
+Naughty,Attack,Special Defense
+Bold,Defense,Attack
+Docile,Defense,Defense
+Impish,Defense,Special Attack
+Lax,Defense,Special Defense
+Relaxed,Defense,Speed
+Modest,Special Attack,Attack
+Mild,Special Attack,Defense
+Bashful,Special Attack,Special Attack
+Rash,Special Attack,Special Defense
+Quiet,Special Attack,Speed
+Calm,Special Defense,Attack
+Gentle,Special Defense,Defense
+Sassy,Special Defense,Speed
+Careful,Special Defense,Special Attack
+Quirky,Special Defense,Special Defense
+Timid,Speed,Attack
+Hasty,Speed,Defense
+Jolly,Speed,Special Attack
+Naive,Speed,Special Defense
+Serious,Speed,Speed
