@@ -8,8 +8,6 @@ You can install it with pip
 
 It requires only a Python3.9+ environment and the standard library. It is currently in alpha development, but it can be used for basic Pokémon data science and damage calculations.
 
-Full documentation is still in development. Until 0.1 this package is on alpha development, but it can currently be used for basic Pokémon data science and damage calculations.
-
 For some examples of what you can currently do, please check examples.py.
 
 AI / Additional Sources Disclaimer
