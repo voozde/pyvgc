@@ -2,7 +2,10 @@
 
 # Dates use the YYYY-MM-DD format.
 
-- 2026-11-02 (0.0.2.1, current development release)
+- 2026-11-02 (0.0.2.3, current release)
+    - Updated the package version metadata.
+
+- 2026-11-02 (0.0.2.1 release)
     - Added separate `CHAMPIONS_SINGLES` battle logic with singles screen
       modifiers; Cartridge and Simulator remain doubles defaults.
     - Added `get_pokemon_for_move` and `get_moves_for_pokemon` utility functions.
