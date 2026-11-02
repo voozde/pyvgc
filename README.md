@@ -41,3 +41,5 @@ AI / Additional Sources Disclaimer
 -> Current development is assisted by the VSCode Copilot Plugin, which settled on GPT-5.6-Luna.
 
 -> Bundled battle-item reference data with effect descriptions crawled from [Serebii's ItemDex](https://www.serebii.net/itemdex/).
+
+-> Currently in development.
