@@ -962,7 +962,7 @@ class DamageCalculationTests(unittest.TestCase):
             get_move("")
         with self.assertRaises(ValueError):
             get_move(None)
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             get_moves_for_pokemon("")
         with self.assertRaises(ValueError):
             get_item(None)

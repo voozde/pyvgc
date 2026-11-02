@@ -33,7 +33,7 @@ def _learnset_indexes(
 
 def get_moves_for_pokemon(
     name: str,
-    regulation: str = "M-C",
+    regulation: str,
 ) -> tuple[Move, ...]:
     """Return a Pokémon's legal moves for a regulation.
 
