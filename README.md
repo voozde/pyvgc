@@ -6,12 +6,11 @@ It is currently meant for Python 3.9 and newer, without runtime dependencies.
 You can install it with pip
   -  `pip install pyvgc`
 
+You may consult its official pypi page at [https://pypi.org/project/pyvgc/](https://pypi.org/project/pyvgc/)
+
 It requires only a Python3.9+ environment and the standard library. It is currently in alpha development, but it can be used for basic Pokémon data science and damage calculations.
 
-The current version supports regulations:
-  - m-a
-  - m-b
-  - m-c
+The current version supports the current Pokémon Champions regulations (m-a,m-b and m-c)
 
 For some examples of what you can currently do, please check examples.py.
 
