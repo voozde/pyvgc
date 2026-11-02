@@ -7,9 +7,6 @@ __pycache__/
 build/
 dist/
 
-# Packaging configuration kept out of this GitHub repository
-pyproject.toml
-
 # Local environments and editor/OS files
 .venv/
 venv/
