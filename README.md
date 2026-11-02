@@ -8,7 +8,14 @@ You can install it with pip
 
 It requires only a Python3.9+ environment and the standard library. It is currently in alpha development, but it can be used for basic Pokémon data science and damage calculations.
 
+The current version supports regulations:
+  - m-a
+  - m-b
+  - m-c
+
 For some examples of what you can currently do, please check examples.py.
+
+As this currently a personal side-project, expect updates to be slow. 
 
 AI / Additional Sources Disclaimer
 

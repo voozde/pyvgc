@@ -164,3 +164,31 @@ if __name__ == "__main__":
     print(damage_singles_noscreen)
     print(damage_singles)
     print(damage_doubles)
+
+    # Lastly, for illustration purposes you could make up your own fake-pokémon and use it, 
+    # but you currently need to be roundabout to do it.
+
+    dummy_zacian = regulation_mb_doubles.load_pokemon(
+        "Incineroar")
+    dummy_zacian.name = "Zacian"
+    dummy_zacian.types = ("Fairy", "Steel")
+    print(dummy_zacian.info())
+    
+    #set stats only sets the actual values, not the "base_values". 
+    #That is, you set your attack to X, not the base that later on gets added +20
+    dummy_zacian.set_stats({
+        "hp": 167,
+        "attack": 170,
+        "defense": 135,
+        "special_attack": 100,
+        "special_defense": 135,
+        "speed": 168
+    })
+
+    damage_zacian = regulation_mb_doubles.battle_logic.calculate_damage(
+        dummy_zacian,
+        target_doubles,
+        power=40,
+        move_type="Steel",
+    )
+    print("Madeup Zacian damage rolls",damage_zacian)

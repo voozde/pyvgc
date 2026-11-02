@@ -828,6 +828,39 @@ class DamageCalculationTests(unittest.TestCase):
         with self.assertRaises(KeyError):
             regulation.load_pokemon("Not a Pokémon")
 
+    def test_regulations_support_shared_battle_logics(self):
+        """Pokémon from different regulations work with a shared battle logic."""
+        regulation_names = ("M-A", "M-B", "M-C")
+        logic_names = (
+            "Cartridge-Champions-Release-2026",
+            "Simulator-Champions-Release-2026",
+            "Champions-Singles-2026",
+        )
+
+        for logic_name in logic_names:
+            regulations = {
+                name: load_regulation(name, battle_logic=logic_name)
+                for name in regulation_names
+            }
+            attackers = {
+                name: regulation.load_pokemon("Incineroar")
+                for name, regulation in regulations.items()
+            }
+            defenders = {
+                name: regulation.load_pokemon("Venusaur")
+                for name, regulation in regulations.items()
+            }
+
+            for attacker in attackers.values():
+                for defender in defenders.values():
+                    rolls = calculate_damage(
+                        attacker,
+                        defender,
+                        power=40,
+                        move_type="Fire",
+                    )
+                    self.assertTrue(rolls["normal"])
+
     def test_regulation_csv_selects_simulator_logic(self):
         """A regulation can load the simulator-specific battle logic."""
         regulation = load_regulation("M-C", platform="Simulator")
