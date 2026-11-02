@@ -12,7 +12,6 @@ from .battle_logic import BattleLogic, CARTRIDGE_CHAMPIONS_RELEASE_2026
 from .constants import NATURES, STAT_NAMES, TYPES
 from .items import Item, get_item
 from .moves import Move
-from .utils import get_moves_for_pokemon
 
 
 class RosterEntry(NamedTuple):
@@ -36,7 +35,7 @@ class Pokemon:
         "number", "name", "hp", "attack", "defense", "special_attack",
         "special_defense", "speed", "_types", "_item", "nature",
         "_pre_stage_stats", "_stat_stages",
-        "_logic",
+        "_logic", "_regulation",
     )
 
     def __init__(
@@ -55,6 +54,7 @@ class Pokemon:
         stat_stages: Optional[Mapping[str, int]] = None,
         logic: BattleLogic = CARTRIDGE_CHAMPIONS_RELEASE_2026,
         item: Optional[Union[str, Item]] = None,
+        regulation: Optional[str] = None,
     ) -> None:
         """Create a Pokémon from base stats and optional battle settings.
 
@@ -63,7 +63,12 @@ class Pokemon:
         """
         if not isinstance(logic, BattleLogic):
             raise TypeError("logic must be a BattleLogic instance")
+        if regulation is not None and (
+            not isinstance(regulation, str) or not regulation.strip()
+        ):
+            raise ValueError("regulation must be a non-empty string")
         self._logic = logic
+        self._regulation = None if regulation is None else regulation.strip()
         training = {**dict.fromkeys(STAT_NAMES, 0), **(stat_training or {})}
         if set(training) != set(STAT_NAMES):
             raise ValueError("stat_training contains an unknown stat")
@@ -187,6 +192,11 @@ class Pokemon:
         """Return the battle logic used by this Pokémon."""
         return self._logic
 
+    @property
+    def regulation(self) -> Optional[str]:
+        """Return the regulation associated with this Pokémon, if specified."""
+        return self._regulation
+
     def set_types(self, types: Iterable[str]) -> None:
         """Set one or two valid, distinct Pokémon types.
 
@@ -238,8 +248,9 @@ class Pokemon:
         stat_stages: Optional[Mapping[str, int]] = None,
         logic: BattleLogic = CARTRIDGE_CHAMPIONS_RELEASE_2026,
         item: Optional[Union[str, Item]] = None,
+        regulation: Optional[str] = None,
     ) -> "Pokemon":
-        """Load one canonical roster form with optional battle settings."""
+        """Load one roster form with optional settings and a learnset regulation."""
         if not isinstance(name, str) or not name.strip():
             raise ValueError("Pokémon name must be a non-empty string")
         try:
@@ -253,12 +264,27 @@ class Pokemon:
             stat_stages=stat_stages,
             logic=logic,
             item=item,
+            regulation=regulation,
         )
 
     @property
     def moves(self) -> tuple[Move, ...]:
-        """Return this form's available moves in alphabetical order."""
-        return get_moves_for_pokemon(self.name)
+        """Return this form's moves for its associated regulation.
+
+        Raises:
+            ValueError: If no regulation was specified for this Pokémon.
+        """
+        if self._regulation is None:
+            raise ValueError(
+                "A regulation is required to retrieve this Pokémon's moves; "
+                "specify it when loading the Pokémon or use "
+                "get_moves_for_pokemon(name, regulation)"
+            )
+        from .regulations import load_regulation
+
+        return load_regulation(
+            self._regulation
+        ).get_moves_for_pokemon(self.name)
 
 
 @lru_cache(maxsize=1)

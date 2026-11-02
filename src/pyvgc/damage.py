@@ -5,10 +5,10 @@ from __future__ import annotations
 from fractions import Fraction
 from typing import TYPE_CHECKING, Iterable, TypedDict
 
-from .battle_logic import BattleLogic, CARTRIDGE_CHAMPIONS_RELEASE_2026
 from .constants import TYPES
 
 if TYPE_CHECKING:
+    from .battle_logic import BattleLogic
     from .pokemon import Pokemon
 
 SPREAD_MULTIPLIER = Fraction(3, 4)

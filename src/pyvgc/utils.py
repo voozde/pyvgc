@@ -1,34 +1,6 @@
 """Supportive data-query utilities for pyvgc."""
 
-from functools import lru_cache
-
 from .moves import Move
-
-
-@lru_cache(maxsize=None)
-def _learnset_indexes(
-    regulation: str,
-) -> tuple[
-    dict[str, tuple[Move, ...]],
-    dict[str, tuple[str, ...]],
-]:
-    """Load and cache Pokémon and move-to-Pokémon learnset indexes."""
-    from .regulations import load_regulation
-
-    snapshot = load_regulation(regulation)
-    by_pokemon = {}
-    by_move = {}
-    for pokemon_name, moves in snapshot.learnsets.items():
-        by_pokemon[pokemon_name.casefold()] = moves
-        for move in moves:
-            by_move.setdefault(move.name.casefold(), []).append(pokemon_name)
-    return (
-        by_pokemon,
-        {
-            move: tuple(sorted(users, key=str.casefold))
-            for move, users in by_move.items()
-        },
-    )
 
 
 def get_moves_for_pokemon(
@@ -43,13 +15,14 @@ def get_moves_for_pokemon(
     """
     if not isinstance(name, str) or not name.strip():
         raise ValueError("Pokémon name must be a non-empty string")
+    from .regulations import load_regulation
+
     try:
-        moves = _learnset_indexes(regulation)[0][name.strip().casefold()]
+        return load_regulation(regulation).get_moves_for_pokemon(name)
     except KeyError:
         raise KeyError(
             f"Pokémon not found in Pokémon Champions learnsets: {name!r}"
         ) from None
-    return moves
 
 
 def get_pokemon_for_move(
@@ -66,8 +39,9 @@ def get_pokemon_for_move(
         raise ValueError("move name must be a non-empty string")
     from .regulations import load_regulation
 
-    move_name = load_regulation(regulation).move(name).name
-    return _learnset_indexes(regulation)[1].get(move_name.casefold(), ())
+    snapshot = load_regulation(regulation)
+    move_name = snapshot.move(name).name
+    return snapshot._pokemon_by_move.get(move_name.casefold(), ())
 
 
 def pokemon_with_single_ability(regulation: str) -> tuple[str, ...]:

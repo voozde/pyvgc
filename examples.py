@@ -34,7 +34,7 @@ if __name__ == "__main__":
                        "special_attack": 0, 
                        "special_defense": 3, 
                        "speed": 0}, 
-        item="Sitrus Berry"
+        item="Sitrus Berry",
     )
 
     # Print information about the Pokémon, including its stats and moves.

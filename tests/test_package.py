@@ -29,7 +29,7 @@ from pyvgc import (
 class DamageCalculationTests(unittest.TestCase):
     def test_package_exposes_current_version(self):
         """The package exposes the declared distribution version."""
-        self.assertEqual(__version__, "0.0.2.4")
+        self.assertEqual(__version__, "0.0.2.5")
 
     def test_regulation_representation_is_concise(self):
         """Loaded regulations do not print their complete data mappings."""
@@ -475,6 +475,27 @@ class DamageCalculationTests(unittest.TestCase):
         self.assertEqual(info["nature"], "Adamant")
         self.assertEqual(info["stats"]["hp"], pokemon.hp)
         self.assertEqual(info["stats"]["attack"], pokemon.attack)
+
+    def test_pokemon_moves_requires_an_explicit_regulation(self):
+        """A Pokémon without a regulation cannot implicitly select its moves."""
+        pokemon = Pokemon.load("Incineroar")
+
+        with self.assertRaisesRegex(ValueError, "regulation is required"):
+            pokemon.moves
+
+        explicitly_bound = Pokemon.load("Incineroar", regulation="M-B")
+        self.assertEqual(explicitly_bound.regulation, "M-B")
+        self.assertEqual(
+            explicitly_bound.moves,
+            get_moves_for_pokemon("Incineroar", "M-B"),
+        )
+
+        regulation_bound = load_regulation("M-A").load_pokemon("Incineroar")
+        self.assertEqual(regulation_bound.regulation, "M-A")
+        self.assertEqual(
+            regulation_bound.moves,
+            get_moves_for_pokemon("Incineroar", "M-A"),
+        )
 
     def test_pokemon_items_can_be_read_and_changed(self):
         """A held item can be assigned, read, and removed."""
@@ -947,10 +968,23 @@ class DamageCalculationTests(unittest.TestCase):
         self.assertIs(regulation._pokemon_index, singles._pokemon_index)
         self.assertIs(regulation._move_index, singles._move_index)
         self.assertIs(
+            regulation._learnsets_by_pokemon,
+            singles._learnsets_by_pokemon,
+        )
+        self.assertIs(regulation._pokemon_by_move, singles._pokemon_by_move)
+        self.assertIs(
             regulation._signature_move_index,
             singles._signature_move_index,
         )
         self.assertIs(regulation.move("pRoTeCt"), regulation._move_index["protect"])
+        self.assertIs(
+            regulation.get_moves_for_pokemon("incineroar"),
+            get_moves_for_pokemon("Incineroar", "M-C"),
+        )
+        self.assertEqual(
+            regulation._pokemon_by_move["follow me"],
+            get_pokemon_for_move("Follow Me", "M-C"),
+        )
         self.assertEqual(
             singles.load_pokemon("  incineroar ").name,
             "Incineroar",

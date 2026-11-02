@@ -2,6 +2,10 @@
 
 # Dates use the YYYY-MM-DD format.
 
+- 2026-11-02 (0.0.2.5, current release)
+    - Bind loaded Pokémon to their regulation for move lookups.
+    - Consolidate regulation learnset indexes and avoid eager circular imports.
+
 - 2026-11-02 (0.0.2.4, current release)
     - Updated package version metadata.
 
