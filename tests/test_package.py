@@ -328,6 +328,33 @@ class DamageCalculationTests(unittest.TestCase):
             45, 45, 45, 48, 48, 48, 48, 49,
         ])
 
+    def test_non_immune_damage_rolls_have_a_minimum_of_one(self):
+        """Resisted damage is floored at one while type immunity stays zero."""
+        logic = self.incineroar_base.battle_logic
+        resisted = damage_rolls(
+            power=1,
+            attack=1,
+            defense=10**9,
+            move_type="Normal",
+            attacker_types=("Normal",),
+            defender_types=("Rock", "Steel"),
+            logic=logic,
+        )
+        immune = damage_rolls(
+            power=1,
+            attack=1,
+            defense=10**9,
+            move_type="Normal",
+            attacker_types=("Normal",),
+            defender_types=("Ghost",),
+            logic=logic,
+        )
+
+        self.assertEqual(resisted["normal"], [1] * 16)
+        self.assertEqual(resisted["critical"], [1] * 16)
+        self.assertEqual(immune["normal"], [0] * 16)
+        self.assertEqual(immune["critical"], [0] * 16)
+
     def test_singles_logic_uses_half_screen_modifier(self):
         """Singles logic keeps the 1/2 screen modifier."""
         attacker = Pokemon.load("Incineroar", logic=CHAMPIONS_SINGLES)
@@ -912,6 +939,23 @@ class DamageCalculationTests(unittest.TestCase):
             CHAMPIONS_SINGLES,
         )
 
+    def test_regulation_indexes_are_reused_for_logic_overrides(self):
+        """Lookup indexes survive creation of a logic-specific snapshot."""
+        regulation = load_regulation("M-C")
+        singles = load_regulation("M-C", battle_logic=CHAMPIONS_SINGLES)
+
+        self.assertIs(regulation._pokemon_index, singles._pokemon_index)
+        self.assertIs(regulation._move_index, singles._move_index)
+        self.assertIs(
+            regulation._signature_move_index,
+            singles._signature_move_index,
+        )
+        self.assertIs(regulation.move("pRoTeCt"), regulation._move_index["protect"])
+        self.assertEqual(
+            singles.load_pokemon("  incineroar ").name,
+            "Incineroar",
+        )
+
     def test_public_lookups_reject_invalid_names(self):
         """Public name-based lookups reject empty and non-string values."""
         with self.assertRaises(ValueError):
@@ -953,6 +997,7 @@ class DamageCalculationTests(unittest.TestCase):
     def test_signature_moves_count_forms_independently(self):
         """Signature moves group variants and return every learning form."""
         signature = signature_moves("M-C")
+        self.assertIs(signature, signature_moves("M-C"))
 
         self.assertIn(("Apple Acid", "Appletun"), signature)
         self.assertIn(("Aqua Step", "Quaquaval"), signature)

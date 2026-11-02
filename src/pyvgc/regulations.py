@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import csv
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, field, replace
 from functools import lru_cache
 from importlib import resources
 from types import MappingProxyType
@@ -47,6 +47,66 @@ class RegulationData:
     learnsets: Mapping[str, tuple[Move, ...]]
     abilities: Mapping[str, tuple[str, ...]]
     item_data: Mapping[str, RegulationItem]
+    _pokemon_index: Mapping[str, Mapping[str, str]] = field(
+        default_factory=lambda: MappingProxyType({}),
+        repr=False,
+        compare=False,
+    )
+    _move_index: Mapping[str, Move] = field(
+        default_factory=lambda: MappingProxyType({}),
+        repr=False,
+        compare=False,
+    )
+    _signature_move_index: tuple[tuple[str, str], ...] = field(
+        default=(),
+        repr=False,
+        compare=False,
+    )
+
+    def __post_init__(self) -> None:
+        """Build immutable lookup indexes once for this regulation snapshot."""
+        if self._pokemon_index and self._move_index:
+            return
+
+        pokemon_index: dict[str, Mapping[str, str]] = {}
+        for pokemon in self.pokemon:
+            pokemon_index.setdefault(pokemon["PokemonName"].casefold(), pokemon)
+
+        move_index: dict[str, Move] = {}
+        for move in self.moves:
+            move_index.setdefault(move.name.casefold(), move)
+
+        users_by_move: dict[str, dict[str, list[str]]] = {}
+        for pokemon_name, moves in self.learnsets.items():
+            species_number = pokemon_index[pokemon_name.casefold()][
+                "PokemonNumber"
+            ]
+            for move in moves:
+                users_by_move.setdefault(
+                    move.name.casefold(), {}
+                ).setdefault(species_number, []).append(pokemon_name)
+
+        signature_moves = []
+        for move_key, species_users in users_by_move.items():
+            if len(species_users) == 1:
+                signature_moves.extend(
+                    (move_index[move_key].name, pokemon_name)
+                    for pokemon_names in species_users.values()
+                    for pokemon_name in pokemon_names
+                )
+
+        object.__setattr__(
+            self, "_pokemon_index", MappingProxyType(pokemon_index)
+        )
+        object.__setattr__(self, "_move_index", MappingProxyType(move_index))
+        object.__setattr__(
+            self,
+            "_signature_move_index",
+            tuple(sorted(
+                signature_moves,
+                key=lambda pair: (pair[0].casefold(), pair[1].casefold()),
+            )),
+        )
 
     def __repr__(self) -> str:
         """Return a concise representation of the loaded regulation."""
@@ -125,8 +185,8 @@ class RegulationData:
             raise ValueError("Pokémon name must be a non-empty string")
         key = name.strip().casefold()
         try:
-            row = next(row for row in self.pokemon if row["PokemonName"].casefold() == key)
-        except StopIteration:
+            row = self._pokemon_index[key]
+        except KeyError:
             raise KeyError(
                 f"Pokémon {name!r} is unavailable in regulation {self.name}"
             ) from None
@@ -164,8 +224,8 @@ class RegulationData:
             raise ValueError("move name must be a non-empty string")
         key = name.strip().casefold()
         try:
-            return next(move for move in self.moves if move.name.casefold() == key)
-        except StopIteration:
+            return self._move_index[key]
+        except KeyError:
             raise KeyError(
                 f"Move {name!r} is unavailable in regulation {self.name}"
             ) from None

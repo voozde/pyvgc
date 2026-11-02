@@ -98,8 +98,8 @@ def damage_rolls(
     ``attack`` and ``defense`` are the already-calculated battle stats.
     Damage is floored at every formula step, as in the games. Critical hits
     use the selected logic's critical multiplier and ignore the relevant stat
-    stages. Modifier flags are disabled by default; ``spread=False`` represents
-    a single-target move.
+    stages. Non-immune hits deal at least 1 damage. Modifier flags are disabled
+    by default; ``spread=False`` represents a single-target move.
     """
     if not all(
         type(value) is int and value > 0
@@ -153,6 +153,8 @@ def damage_rolls(
             fixed = int(fixed * effectiveness)
             if not critical:
                 fixed = int(fixed * screen_multiplier)
+            if effectiveness:
+                fixed = max(1, fixed)
             result.append(fixed)
         return result
 

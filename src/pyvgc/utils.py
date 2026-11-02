@@ -160,31 +160,4 @@ def signature_moves(regulation: str) -> tuple[tuple[str, str], ...]:
     from .regulations import load_regulation
 
     snapshot = load_regulation(regulation)
-    form_numbers = {
-        row["PokemonName"]: row["PokemonNumber"]
-        for row in snapshot.pokemon
-    }
-    users: dict[str, list[tuple[str, str]]] = {}
-    for pokemon_name, moves in snapshot.learnsets.items():
-        for move in moves:
-            users.setdefault(move.name.casefold(), []).append(
-                (pokemon_name, form_numbers[pokemon_name])
-            )
-
-    signature = []
-    for move_key, move_users in users.items():
-        species_numbers = {number for _, number in move_users}
-        if len(species_numbers) == 1:
-            move_name = next(
-                move.name
-                for move in snapshot.moves
-                if move.name.casefold() == move_key
-            )
-            signature.extend(
-                (move_name, pokemon_name)
-                for pokemon_name, _ in move_users
-            )
-    return tuple(sorted(
-        signature,
-        key=lambda pair: (pair[0].casefold(), pair[1].casefold()),
-    ))
+    return snapshot._signature_move_index
