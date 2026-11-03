@@ -3,9 +3,9 @@
 # Dates use the YYYY-MM-DD format.
 
 - 2026-11-03 (0.0.2.6, current release)
-    - Rename regulation learnsets to movepools and add Pokémon movesets of up
+    - Renamed regulation learnsets to movepools and added Pokémon movesets of up
       to four regulation-legal moves.
-    - Allow equipped moves to be passed directly into damage calculations.
+    - Allowed equipped moves to be passed directly into damage calculations.
 
 - 2026-11-02 (0.0.2.5)
     - Bind loaded Pokémon to their regulation for move lookups.
