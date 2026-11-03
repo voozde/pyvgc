@@ -6,6 +6,7 @@ from fractions import Fraction
 from typing import TYPE_CHECKING, Iterable, TypedDict
 
 from .constants import TYPES
+from .moves import Move
 
 if TYPE_CHECKING:
     from .battle_logic import BattleLogic
@@ -78,20 +79,56 @@ def _screen_multiplier(
     return logic.screen_multiplier if screen_active else Fraction(1)
 
 
+def _resolve_move_parameters(
+    power: int | Move | None,
+    move_type: str | None,
+    special: bool | None,
+    move: Move | None,
+) -> tuple[int, str, bool]:
+    """Resolve either a custom Move or the legacy raw damage parameters."""
+    if move is not None:
+        if power is not None or move_type is not None:
+            raise ValueError("provide either move or power and move_type, not both")
+        selected_move = move
+    elif isinstance(power, Move):
+        if move_type is not None:
+            raise ValueError("move_type must not be provided with a Move")
+        selected_move = power
+    else:
+        selected_move = None
+
+    if selected_move is None:
+        if power is None or move_type is None:
+            raise ValueError("power and move_type are required without a Move")
+        return power, move_type, bool(special)
+
+    if not isinstance(selected_move, Move):
+        raise TypeError("move must be a Move instance")
+    if selected_move.category not in ("Physical", "Special"):
+        raise ValueError("only Physical and Special moves can deal damage")
+    if selected_move.base_power is None:
+        raise ValueError("move must have a base power to calculate damage")
+    move_is_special = selected_move.category == "Special"
+    if special is not None and special != move_is_special:
+        raise ValueError("special must match the Move category")
+    return selected_move.base_power, selected_move.type, move_is_special
+
+
 def damage_rolls(
-    power: int,
+    power: int | Move | None,
     attack: int,
     defense: int,
-    move_type: str,
+    move_type: str | None,
     attacker_types: Iterable[str],
     defender_types: Iterable[str],
     logic: BattleLogic,
-    special: bool = False,
+    special: bool | None = None,
     light_screen: bool = False,
     reflect: bool = False,
     aurora_veil: bool = False,
     helping_hand: bool = False,
     spread: bool = False,
+    move: Move | None = None,
 ) -> DamageRolls:
     """Return all 16 normal and 16 critical damage rolls.
 
@@ -101,6 +138,9 @@ def damage_rolls(
     stages. Non-immune hits deal at least 1 damage. Modifier flags are disabled
     by default; ``spread=False`` represents a single-target move.
     """
+    power, move_type, special = _resolve_move_parameters(
+        power, move_type, special, move
+    )
     if not all(
         type(value) is int and value > 0
         for value in (power, attack, defense)
@@ -164,15 +204,16 @@ def damage_rolls(
 def calculate_damage(
     attacker: "Pokemon",
     defender: "Pokemon",
-    power: int,
-    move_type: str,
-    special: bool = False,
+    power: int | Move | None = None,
+    move_type: str | None = None,
+    special: bool | None = None,
     percentage: bool = True,
     light_screen: bool = False,
     reflect: bool = False,
     aurora_veil: bool = False,
     helping_hand: bool = False,
     spread: bool = False,
+    move: Move | None = None,
 ) -> DamageRolls:
     """Calculate damage rolls using two Pokémon and their current battle state.
 
@@ -183,6 +224,9 @@ def calculate_damage(
     """
     from .pokemon import Pokemon
 
+    power, move_type, special = _resolve_move_parameters(
+        power, move_type, special, move
+    )
     if not isinstance(attacker, Pokemon) or not isinstance(defender, Pokemon):
         raise TypeError("attacker and defender must be Pokemon instances")
     if attacker.battle_logic is not defender.battle_logic:

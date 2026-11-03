@@ -11,7 +11,7 @@ from .battle_logic import (
 )
 from .damage import calculate_damage, damage_rolls
 from .items import Item, get_item
-from .moves import Move, get_move
+from .moves import Move, create_custom_move, get_move
 from .pokemon import Pokemon
 from .regulations import load_regulation
 from .utils import (
@@ -38,6 +38,7 @@ __all__ = [
     "Move",
     "Pokemon",
     "calculate_damage",
+    "create_custom_move",
     "damage_rolls",
     "get_battle_logic",
     "get_item",

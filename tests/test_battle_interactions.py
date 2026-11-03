@@ -12,6 +12,7 @@ from pyvgc import (
     CHAMPIONS_SINGLES,
     Pokemon,
     calculate_damage,
+    create_custom_move,
     damage_rolls,
     get_battle_logic,
     get_item,
@@ -36,6 +37,92 @@ class BattleInteractionTests(unittest.TestCase):
         )
         self.assertEqual(rolls["normal"], 
                          [84, 84, 85, 87, 87, 88, 90, 90, 91, 93, 93, 94, 96, 96, 97, 99])
+
+    def test_custom_move_can_be_used_for_damage_calculation(self):
+        """A created move supplies its own power, type, and damage category."""
+        electro_drift = create_custom_move(
+            "ElectroDrift",
+            base_power=120,
+            move_type="Electric",
+            category="Special",
+        )
+
+        move_rolls = calculate_damage(
+            self.incineroar_base,
+            self.venusaur_base,
+            move=electro_drift,
+            percentage=False,
+        )
+        equivalent_rolls = calculate_damage(
+            self.incineroar_base,
+            self.venusaur_base,
+            power=120,
+            move_type="Electric",
+            special=True,
+            percentage=False,
+        )
+        low_level_rolls = damage_rolls(
+            electro_drift,
+            self.incineroar_base.special_attack,
+            self.venusaur_base.special_defense,
+            None,
+            self.incineroar_base.types,
+            self.venusaur_base.types,
+            self.incineroar_base.battle_logic,
+        )
+
+        self.assertEqual(electro_drift.name, "ElectroDrift")
+        self.assertEqual(electro_drift.accuracy, 100)
+        self.assertEqual(electro_drift.pp, 10)
+        self.assertEqual(move_rolls, equivalent_rolls)
+        self.assertEqual(low_level_rolls, equivalent_rolls)
+        self.assertEqual(
+            self.incineroar_base.battle_logic.calculate_damage(
+                self.incineroar_base,
+                self.venusaur_base,
+                move=electro_drift,
+                percentage=False,
+            ),
+            equivalent_rolls,
+        )
+
+    def test_custom_move_rejects_only_invalid_categories_and_status_power(self):
+        """Only category and status base power are restricted on creation."""
+        with self.assertRaises(ValueError):
+            create_custom_move("Odd Hit", 40, "Electric", "Other")
+        with self.assertRaises(ValueError):
+            create_custom_move("Status Hit", 0, "Electric", "Status")
+
+        status_move = create_custom_move(
+            "Odd Status",
+            None,
+            "Not a type",
+            "Status",
+            accuracy=0,
+            pp=0,
+        )
+        unusual_attack = create_custom_move(
+            "",
+            -1,
+            "Not a type",
+            "Physical",
+            accuracy=0,
+            pp=0,
+        )
+        powerless_special = create_custom_move(
+            "No Power",
+            None,
+            "Electric",
+            "Special",
+        )
+
+        self.assertEqual(status_move.base_power, None)
+        self.assertEqual(status_move.type, "Not a type")
+        self.assertEqual(unusual_attack.name, "")
+        self.assertEqual(unusual_attack.base_power, -1)
+        self.assertEqual(unusual_attack.accuracy, 0)
+        self.assertEqual(unusual_attack.pp, 0)
+        self.assertIsNone(powerless_special.base_power)
 
     def test_physical_normal_rolls(self):
         """Physical Fire damage returns the expected 16 normal rolls."""

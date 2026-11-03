@@ -30,6 +30,7 @@ from .constants import (
 
 if TYPE_CHECKING:
     from .damage import DamageRolls
+    from .moves import Move
     from .pokemon import Pokemon
 
 
@@ -70,15 +71,16 @@ class BattleLogic:
         self,
         attacker: "Pokemon",
         defender: "Pokemon",
-        power: int,
-        move_type: str,
-        special: bool = False,
+        power: int | "Move" | None = None,
+        move_type: Optional[str] = None,
+        special: Optional[bool] = None,
         percentage: bool = True,
         light_screen: bool = False,
         reflect: bool = False,
         aurora_veil: bool = False,
         helping_hand: bool = False,
         spread: bool = False,
+        move: Optional["Move"] = None,
     ) -> "DamageRolls":
         """Calculate damage using this battle logic and two Pokémon.
 
@@ -103,6 +105,7 @@ class BattleLogic:
             aurora_veil=aurora_veil,
             helping_hand=helping_hand,
             spread=spread,
+            move=move,
         )
 
 

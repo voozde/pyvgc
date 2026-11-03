@@ -41,6 +41,36 @@ class Move(NamedTuple):
         )
 
 
+def create_custom_move(
+    name: str,
+    base_power: Optional[int],
+    move_type: str,
+    category: str,
+    accuracy: Optional[int] = 100,
+    pp: int = 10,
+) -> Move:
+    """Create a custom move without adding it to the move database."""
+    if not isinstance(category, str):
+        raise ValueError(
+            "move category must be 'Physical', 'Special', or 'Status'"
+        )
+    normalized_category = category.strip().casefold()
+    if normalized_category not in ("physical", "special", "status"):
+        raise ValueError(
+            "move category must be 'Physical', 'Special', or 'Status'"
+        )
+    if normalized_category == "status" and base_power is not None:
+        raise ValueError("Status moves cannot have base power")
+    return Move(
+        name=name,
+        category=normalized_category.title(),
+        accuracy=accuracy,
+        base_power=base_power,
+        type=move_type,
+        pp=pp,
+    )
+
+
 @lru_cache(maxsize=1)
 def _move_index() -> dict[str, Move]:
     """Load and cache moves indexed by case-insensitive name."""

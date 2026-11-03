@@ -14,9 +14,6 @@ The current version supports the current Pokémon Champions regulations (m-a,m-b
 
 For some examples of what you can currently do, please check examples.py or the pyvgc_tutorial.ipynb notebook.
 
-As this currently a personal side-project, expect updates to be slow. 
-
-
 # AI / Additional Sources Disclaimer
 
 Current development is assisted by the VSCode Copilot Plugin, which settled on GPT-5.6-Luna.
