@@ -8,13 +8,14 @@ sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
 from pyvgc import (
     CHAMPIONS_SINGLES,
+    Move,
     Pokemon,
     __version__,
     calculate_damage,
     get_battle_logic,
     get_item,
     get_move,
-    get_moves_for_pokemon,
+    get_movepool_for_pokemon,
     get_pokemon_for_move,
     load_regulation,
     pokemon_with_ability,
@@ -27,7 +28,7 @@ class PackageTests(unittest.TestCase):
 
     def test_package_exposes_current_version(self):
         """The package exposes the declared distribution version."""
-        self.assertEqual(__version__, "0.0.2.5")
+        self.assertEqual(__version__, "0.0.2.6")
 
     def test_regulation_representation_is_concise(self):
         """Loaded regulations do not print their complete data mappings."""
@@ -40,26 +41,85 @@ class PackageTests(unittest.TestCase):
         )
         self.assertEqual(repr(regulation), str(regulation))
 
-    def test_pokemon_moves_requires_an_explicit_regulation(self):
-        """A Pokémon without a regulation cannot implicitly select its moves."""
+    def test_pokemon_movepool_requires_an_explicit_regulation(self):
+        """A Pokémon without a regulation cannot implicitly select a movepool."""
         pokemon = Pokemon.load("Incineroar")
 
         with self.assertRaisesRegex(ValueError, "regulation is required"):
-            pokemon.moves
+            pokemon.movepool
 
         explicitly_bound = Pokemon.load("Incineroar", regulation="M-B")
         self.assertEqual(explicitly_bound.regulation, "M-B")
         self.assertEqual(
-            explicitly_bound.moves,
-            get_moves_for_pokemon("Incineroar", "M-B"),
+            explicitly_bound.movepool,
+            get_movepool_for_pokemon("Incineroar", "M-B"),
         )
 
         regulation_bound = load_regulation("M-A").load_pokemon("Incineroar")
         self.assertEqual(regulation_bound.regulation, "M-A")
         self.assertEqual(
-            regulation_bound.moves,
-            get_moves_for_pokemon("Incineroar", "M-A"),
+            regulation_bound.movepool,
+            get_movepool_for_pokemon("Incineroar", "M-A"),
         )
+
+    def test_pokemon_moveset_can_be_empty_or_contain_up_to_four_moves(self):
+        """A moveset is empty by default and stores legal Move objects."""
+        regulation = load_regulation("M-C")
+        pokemon = regulation.load_pokemon("Incineroar")
+        self.assertEqual(pokemon.moveset, ())
+
+        pokemon.moveset = (
+            "Fake Out",
+            "Flamethrower",
+            "Darkest Lariat",
+            "Protect",
+        )
+        self.assertEqual(
+            [move.name for move in pokemon.moveset],
+            ["Fake Out", "Flamethrower", "Darkest Lariat", "Protect"],
+        )
+        self.assertTrue(all(isinstance(move, Move) for move in pokemon.moveset))
+        self.assertEqual(
+            pokemon.info()["moveset"],
+            ("Fake Out", "Flamethrower", "Darkest Lariat", "Protect"),
+        )
+
+        defender = regulation.load_pokemon("Venusaur")
+        rolls = regulation.battle_logic.calculate_damage(
+            pokemon,
+            defender,
+            move=pokemon.moveset[1],
+            percentage=False,
+        )
+        self.assertEqual(len(rolls["normal"]), 16)
+
+        pokemon.set_moveset(())
+        self.assertEqual(pokemon.moveset, ())
+
+        initialized = regulation.load_pokemon(
+            "Incineroar", moveset=(get_move("Protect"),)
+        )
+        self.assertEqual(
+            tuple(move.name for move in initialized.moveset),
+            ("Protect",),
+        )
+
+    def test_pokemon_moveset_rejects_more_than_four_or_unlearnable_moves(self):
+        """Movesets cannot exceed four moves or include moves outside a movepool."""
+        pokemon = load_regulation("M-C").load_pokemon("Incineroar")
+
+        with self.assertRaisesRegex(ValueError, "at most four"):
+            pokemon.set_moveset((
+                "Fake Out",
+                "Protect",
+                "Crunch",
+                "Flamethrower",
+                "Acrobatics",
+            ))
+        with self.assertRaisesRegex(ValueError, "not in .* movepool"):
+            pokemon.set_moveset(("Follow Me",))
+        with self.assertRaisesRegex(ValueError, "duplicate move"):
+            pokemon.set_moveset(("Protect", "protect"))
 
     def test_move_lookup_returns_required_attributes(self):
         """Move lookup returns category, accuracy, power, type, and PP."""
@@ -90,10 +150,10 @@ class PackageTests(unittest.TestCase):
         self.assertIsNone(get_move("Revival Blessing").accuracy)
         self.assertEqual(get_move("Revival Blessing").pp, 1)
 
-        learnsets = resources.files("pyvgc.data").joinpath(
-            "regulations", "m_c", "learnsets.csv"
+        movepool_data = resources.files("pyvgc.data").joinpath(
+            "regulations", "m_c", "movepools.csv"
         )
-        with learnsets.open("r", encoding="utf-8", newline="") as file:
+        with movepool_data.open("r", encoding="utf-8", newline="") as file:
             rows = list(csv.DictReader(file))
         pawmot = next(row for row in rows if row["PokemonName"] == "Pawmot")
         self.assertIn("Revival Blessing", pawmot["Moves"].split(";"))
@@ -108,9 +168,9 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(status.category, "Status")
         self.assertIsNone(status.base_power)
 
-    def test_move_learnset_lookups_are_alphabetical_and_bidirectional(self):
+    def test_movepool_lookups_are_alphabetical_and_bidirectional(self):
         """Pokémon-to-move and move-to-Pokémon lookups use cached indexes."""
-        moves = get_moves_for_pokemon("Venusaur", regulation="M-C")
+        moves = get_movepool_for_pokemon("Venusaur", regulation="M-C")
         users = get_pokemon_for_move("Acid Spray", regulation="M-C")
 
         self.assertEqual([move.name for move in moves], sorted(
@@ -119,7 +179,7 @@ class PackageTests(unittest.TestCase):
         self.assertIn("Acid Spray", {move.name for move in moves})
         self.assertIn("Venusaur", users)
 
-        older_moves = get_moves_for_pokemon("Venusaur", regulation="M-A")
+        older_moves = get_movepool_for_pokemon("Venusaur", regulation="M-A")
         older_users = get_pokemon_for_move("Acid Spray", regulation="M-A")
         self.assertEqual(
             {move.name for move in older_moves},
@@ -159,7 +219,7 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(pokemon.name, "Incineroar")
         self.assertEqual(regulation.get_item("Charcoal").name, "Charcoal")
         self.assertEqual(regulation.get_move("Protect").name, "Protect")
-        self.assertTrue(regulation.get_moves_for_pokemon("Incineroar"))
+        self.assertTrue(regulation.get_movepool_for_pokemon("Incineroar"))
 
         with self.assertRaises(KeyError):
             regulation.load_pokemon("Not a Pokémon")
@@ -256,8 +316,8 @@ class PackageTests(unittest.TestCase):
         self.assertIs(regulation._pokemon_index, singles._pokemon_index)
         self.assertIs(regulation._move_index, singles._move_index)
         self.assertIs(
-            regulation._learnsets_by_pokemon,
-            singles._learnsets_by_pokemon,
+            regulation._movepools_by_pokemon,
+            singles._movepools_by_pokemon,
         )
         self.assertIs(regulation._pokemon_by_move, singles._pokemon_by_move)
         self.assertIs(
@@ -266,8 +326,8 @@ class PackageTests(unittest.TestCase):
         )
         self.assertIs(regulation.move("pRoTeCt"), regulation._move_index["protect"])
         self.assertIs(
-            regulation.get_moves_for_pokemon("incineroar"),
-            get_moves_for_pokemon("Incineroar", "M-C"),
+            regulation.get_movepool_for_pokemon("incineroar"),
+            get_movepool_for_pokemon("Incineroar", "M-C"),
         )
         self.assertEqual(
             regulation._pokemon_by_move["follow me"],
@@ -284,8 +344,8 @@ class PackageTests(unittest.TestCase):
             get_move("")
         with self.assertRaises(ValueError):
             get_move(None)
-        with self.assertRaises(TypeError):
-            get_moves_for_pokemon("")
+        with self.assertRaises(ValueError):
+            get_movepool_for_pokemon("", "M-C")
         with self.assertRaises(ValueError):
             get_item(None)
         with self.assertRaises(ValueError):

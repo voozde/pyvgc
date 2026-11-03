@@ -3,11 +3,11 @@
 from .moves import Move
 
 
-def get_moves_for_pokemon(
+def get_movepool_for_pokemon(
     name: str,
     regulation: str,
 ) -> tuple[Move, ...]:
-    """Return a Pokémon's legal moves for a regulation.
+    """Return a Pokémon's legal movepool for a regulation.
 
     Args:
         name: Pokémon form name.
@@ -18,10 +18,10 @@ def get_moves_for_pokemon(
     from .regulations import load_regulation
 
     try:
-        return load_regulation(regulation).get_moves_for_pokemon(name)
+        return load_regulation(regulation).get_movepool_for_pokemon(name)
     except KeyError:
         raise KeyError(
-            f"Pokémon not found in Pokémon Champions learnsets: {name!r}"
+            f"Pokémon not found in Pokémon Champions movepools: {name!r}"
         ) from None
 
 
@@ -29,7 +29,7 @@ def get_pokemon_for_move(
     name: str,
     regulation: str = "M-C",
 ) -> tuple[str, ...]:
-    """Return all forms that learn a move in a regulation.
+    """Return all forms whose movepool contains a move in a regulation.
 
     Args:
         name: Move name.
@@ -118,7 +118,7 @@ def regulation_description(regulation: str) -> str:
 
 
 def signature_moves(regulation: str) -> tuple[tuple[str, str], ...]:
-    """Return moves learned by exactly one Pokémon species.
+    """Return moves in the movepool of exactly one Pokémon species.
 
     Each result is a ``(move_name, pokemon_name)`` pair. Pokémon forms are
     grouped by their shared roster number, so a move learned by a base form

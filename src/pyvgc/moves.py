@@ -1,4 +1,4 @@
-"""Cached move and learnset lookups for Pokémon Champions."""
+"""Move models, regulation movepools, and move lookups for Pokémon Champions."""
 
 from __future__ import annotations
 

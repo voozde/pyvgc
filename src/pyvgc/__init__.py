@@ -15,7 +15,7 @@ from .moves import Move, create_custom_move, get_move
 from .pokemon import Pokemon
 from .regulations import load_regulation
 from .utils import (
-    get_moves_for_pokemon,
+    get_movepool_for_pokemon,
     get_pokemon_for_move,
     pokemon_with_ability,
     pokemon_with_single_ability,
@@ -26,7 +26,7 @@ from .utils import (
 try:
     __version__ = version("pyvgc")
 except PackageNotFoundError:
-    __version__ = "0.0.2.5"
+    __version__ = "0.0.2.6"
 
 __all__ = [
     "__version__",
@@ -43,7 +43,7 @@ __all__ = [
     "get_battle_logic",
     "get_item",
     "get_move",
-    "get_moves_for_pokemon",
+    "get_movepool_for_pokemon",
     "get_pokemon_for_move",
     "load_regulation",
     "pokemon_with_ability",

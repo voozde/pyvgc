@@ -7,7 +7,7 @@ from dataclasses import dataclass, field, replace
 from functools import lru_cache
 from importlib import resources
 from types import MappingProxyType
-from typing import Any, Mapping, Optional, Union
+from typing import Any, Iterable, Mapping, Optional, Union
 
 from .battle_logic import BattleLogic, get_battle_logic
 from .items import Item
@@ -44,7 +44,7 @@ class RegulationData:
     pokemon: tuple[Mapping[str, str], ...]
     items: tuple[str, ...]
     moves: tuple[Move, ...]
-    learnsets: Mapping[str, tuple[Move, ...]]
+    movepools: Mapping[str, tuple[Move, ...]]
     abilities: Mapping[str, tuple[str, ...]]
     item_data: Mapping[str, RegulationItem]
     _pokemon_index: Mapping[str, Mapping[str, str]] = field(
@@ -57,7 +57,7 @@ class RegulationData:
         repr=False,
         compare=False,
     )
-    _learnsets_by_pokemon: Mapping[str, tuple[Move, ...]] = field(
+    _movepools_by_pokemon: Mapping[str, tuple[Move, ...]] = field(
         default_factory=lambda: MappingProxyType({}),
         repr=False,
         compare=False,
@@ -78,7 +78,7 @@ class RegulationData:
         if (
             self._pokemon_index
             and self._move_index
-            and self._learnsets_by_pokemon
+            and self._movepools_by_pokemon
             and self._pokemon_by_move
         ):
             return
@@ -91,12 +91,12 @@ class RegulationData:
         for move in self.moves:
             move_index.setdefault(move.name.casefold(), move)
 
-        learnsets_by_pokemon = {
+        movepools_by_pokemon = {
             pokemon_name.casefold(): moves
-            for pokemon_name, moves in self.learnsets.items()
+            for pokemon_name, moves in self.movepools.items()
         }
         users_by_move: dict[str, dict[str, list[str]]] = {}
-        for pokemon_name, moves in self.learnsets.items():
+        for pokemon_name, moves in self.movepools.items():
             species_number = pokemon_index[pokemon_name.casefold()][
                 "PokemonNumber"
             ]
@@ -131,8 +131,8 @@ class RegulationData:
         object.__setattr__(self, "_move_index", MappingProxyType(move_index))
         object.__setattr__(
             self,
-            "_learnsets_by_pokemon",
-            MappingProxyType(learnsets_by_pokemon),
+            "_movepools_by_pokemon",
+            MappingProxyType(movepools_by_pokemon),
         )
         object.__setattr__(
             self, "_pokemon_by_move", MappingProxyType(pokemon_by_move)
@@ -217,6 +217,7 @@ class RegulationData:
         nature: Optional[str] = None,
         stat_stages: Optional[Mapping[str, int]] = None,
         item: Optional[Union[str, Item]] = None,
+        moveset: Optional[Iterable[Union[str, Move]]] = None,
     ) -> Pokemon:
         """Load a legal Pokémon with optional regulation-valid item."""
         if not isinstance(name, str) or not name.strip():
@@ -243,15 +244,16 @@ class RegulationData:
             logic=self.battle_logic,
             item=legal_item,
             regulation=self.name,
+            moveset=moveset,
         )
 
-    def get_moves_for_pokemon(self, name: str) -> tuple[Move, ...]:
-        """Return the legal learnset for one Pokémon."""
+    def get_movepool_for_pokemon(self, name: str) -> tuple[Move, ...]:
+        """Return the legal movepool for one Pokémon."""
         if not isinstance(name, str) or not name.strip():
             raise ValueError("Pokémon name must be a non-empty string")
         key = name.strip().casefold()
         try:
-            return self._learnsets_by_pokemon[key]
+            return self._movepools_by_pokemon[key]
         except KeyError:
             raise KeyError(
                 f"Pokémon {name!r} is unavailable in regulation {self.name}"
@@ -359,14 +361,14 @@ def _load_regulation(name: str, platform: str) -> RegulationData:
         for row in move_rows
     }
 
-    learnsets = {}
-    for row in _read_csv(_snapshot_path(name, "learnsets.csv")):
+    movepools = {}
+    for row in _read_csv(_snapshot_path(name, "movepools.csv")):
         names = tuple(
             move for move in row["Moves"].split(";")
             if move != _MISSING_DATA_VALUE
         )
         if names:
-            learnsets[row["PokemonName"]] = tuple(
+            movepools[row["PokemonName"]] = tuple(
                 move_index[move.casefold()] for move in names
             )
 
@@ -387,7 +389,7 @@ def _load_regulation(name: str, platform: str) -> RegulationData:
         pokemon=roster,
         items=tuple(row["ItemName"] for row in item_rows),
         moves=tuple(sorted(move_index.values(), key=lambda move: move.name.casefold())),
-        learnsets=MappingProxyType(learnsets),
+        movepools=MappingProxyType(movepools),
         abilities=MappingProxyType(abilities),
         item_data=MappingProxyType({
             row["ItemName"].casefold(): RegulationItem(

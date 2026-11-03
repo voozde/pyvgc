@@ -35,7 +35,7 @@ class Pokemon:
         "number", "name", "hp", "attack", "defense", "special_attack",
         "special_defense", "speed", "_types", "_item", "nature",
         "_pre_stage_stats", "_stat_stages",
-        "_logic", "_regulation",
+        "_logic", "_regulation", "_moveset",
     )
 
     def __init__(
@@ -55,6 +55,7 @@ class Pokemon:
         logic: BattleLogic = CARTRIDGE_CHAMPIONS_RELEASE_2026,
         item: Optional[Union[str, Item]] = None,
         regulation: Optional[str] = None,
+        moveset: Optional[Iterable[Union[str, Move]]] = None,
     ) -> None:
         """Create a Pokémon from base stats and optional battle settings.
 
@@ -69,6 +70,7 @@ class Pokemon:
             raise ValueError("regulation must be a non-empty string")
         self._logic = logic
         self._regulation = None if regulation is None else regulation.strip()
+        self._moveset: tuple[Move, ...] = ()
         training = {**dict.fromkeys(STAT_NAMES, 0), **(stat_training or {})}
         if set(training) != set(STAT_NAMES):
             raise ValueError("stat_training contains an unknown stat")
@@ -132,6 +134,8 @@ class Pokemon:
             numerator, denominator = logic.stat_stage_multipliers[stage]
             setattr(self, stat, getattr(self, stat) * numerator // denominator)
         self._stat_stages = dict(stages)
+        if moveset is not None:
+            self.set_moveset(moveset)
 
     @property
     def stat_stages(self) -> Mapping[str, int]:
@@ -153,7 +157,7 @@ class Pokemon:
         return self._types
 
     def info(self) -> dict[str, object]:
-        """Return the Pokémon's current stats, types, nature, and item."""
+        """Return the Pokémon's current stats, types, nature, item, and moveset."""
         return {
             "name": self.name,
             "stats": {
@@ -163,6 +167,7 @@ class Pokemon:
             "types": self.types,
             "nature": self.nature,
             "item": self.get_item(),
+            "moveset": tuple(move.name for move in self._moveset),
         }
 
     def set_stats(self, stats: Mapping[str, int]) -> None:
@@ -249,8 +254,9 @@ class Pokemon:
         logic: BattleLogic = CARTRIDGE_CHAMPIONS_RELEASE_2026,
         item: Optional[Union[str, Item]] = None,
         regulation: Optional[str] = None,
+        moveset: Optional[Iterable[Union[str, Move]]] = None,
     ) -> "Pokemon":
-        """Load one roster form with optional settings and a learnset regulation."""
+        """Load one roster form with optional settings and a movepool regulation."""
         if not isinstance(name, str) or not name.strip():
             raise ValueError("Pokémon name must be a non-empty string")
         try:
@@ -265,26 +271,84 @@ class Pokemon:
             logic=logic,
             item=item,
             regulation=regulation,
+            moveset=moveset,
         )
 
     @property
-    def moves(self) -> tuple[Move, ...]:
-        """Return this form's moves for its associated regulation.
+    def movepool(self) -> tuple[Move, ...]:
+        """Return this form's learnable moves for its associated regulation.
 
         Raises:
             ValueError: If no regulation was specified for this Pokémon.
         """
         if self._regulation is None:
             raise ValueError(
-                "A regulation is required to retrieve this Pokémon's moves; "
+                "A regulation is required to retrieve this Pokémon's movepool; "
                 "specify it when loading the Pokémon or use "
-                "get_moves_for_pokemon(name, regulation)"
+                "get_movepool_for_pokemon(name, regulation)"
             )
         from .regulations import load_regulation
 
         return load_regulation(
             self._regulation
-        ).get_moves_for_pokemon(self.name)
+        ).get_movepool_for_pokemon(self.name)
+
+    @property
+    def moveset(self) -> tuple[Move, ...]:
+        """Return the moves currently equipped by this Pokémon."""
+        return self._moveset
+
+    @moveset.setter
+    def moveset(self, moves: Iterable[Union[str, Move]]) -> None:
+        """Set up to four moves that this Pokémon can learn."""
+        self.set_moveset(moves)
+
+    def set_moveset(self, moves: Iterable[Union[str, Move]]) -> None:
+        """Equip up to four moves from this Pokémon's regulation movepool."""
+        if isinstance(moves, str):
+            raise TypeError(
+                "moveset must be an iterable of move names or Move objects"
+            )
+        try:
+            selected_iterator = iter(moves)
+        except TypeError:
+            raise TypeError(
+                "moveset must be an iterable of move names or Move objects"
+            ) from None
+        selected_moves = tuple(selected_iterator)
+        if len(selected_moves) > 4:
+            raise ValueError("a moveset can contain at most four moves")
+        if not selected_moves:
+            self._moveset = ()
+            return
+
+        movepool_by_name = {
+            move.name.casefold(): move for move in self.movepool
+        }
+        equipped: list[Move] = []
+        seen: set[str] = set()
+        for selected in selected_moves:
+            if isinstance(selected, Move):
+                move_name = selected.name
+            elif isinstance(selected, str):
+                move_name = selected
+            else:
+                raise TypeError("moveset entries must be move names or Move objects")
+            if not isinstance(move_name, str):
+                raise TypeError("moveset move names must be strings")
+            key = move_name.strip().casefold()
+            try:
+                move = movepool_by_name[key]
+            except KeyError:
+                raise ValueError(
+                    f"Move {move_name!r} is not in {self.name}'s "
+                    f"{self._regulation} movepool"
+                ) from None
+            if key in seen:
+                raise ValueError(f"duplicate move in moveset: {move.name!r}")
+            equipped.append(move)
+            seen.add(key)
+        self._moveset = tuple(equipped)
 
 
 @lru_cache(maxsize=1)

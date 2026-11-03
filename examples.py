@@ -5,7 +5,7 @@ from pyvgc import (
     regulation_description,
     signature_moves,
     get_pokemon_for_move,
-    get_moves_for_pokemon,
+    get_movepool_for_pokemon,
 )
 
 
@@ -36,11 +36,17 @@ if __name__ == "__main__":
                        "speed": 0}, 
         item="Sitrus Berry",
     )
+    dummy.moveset = ("Fake Out", "Flare Blitz", "Darkest Lariat", "Protect")
 
-    # Print information about the Pokémon, including its stats and moves.
+    # Print information about the Pokémon, including its stats and moveset.
     print("GaoGaen")
     print("------------------------------------------")
     print(dummy.info())
+
+    for move in dummy.moveset:
+        print(f"Move: {move.name}, Type: {move.type}, Power: {move.base_power}")
+    for move in dummy.movepool:
+        print(f"Move: {move.name}, Type: {move.type}, Power: {move.base_power}")
 
     # Let's initialize a second Pokémon and calculate damage from one to the other.
     target = regulation_ma.load_pokemon(
@@ -71,22 +77,14 @@ if __name__ == "__main__":
         special=False,
     )
 
-    # Because of exception handling and current ongoing development, you may find certain exceptions
-    # For a clean execution of damaging moves, you can do the following with Python Lists
-
-    for move in dummy.moves:
+    for move in dummy.moveset:
         print(f"Move: {move.name}, Type: {move.type}, Power: {move.base_power}")
-
-    dummy_damage_movepool = [move for move in dummy.moves if move.base_power != None and move.category != "Status"]
-
-    for move in dummy_damage_movepool:
-        print(move.name, move.type, move.base_power)
+        if move.base_power is None:
+            continue
         damage = regulation_ma.battle_logic.calculate_damage(
             dummy,
             target,
-            power=move.base_power,
-            move_type=move.type,
-            special=(move.category == "Special"),
+            move=move,
         )
         print(f"Damage from {dummy.name} using {move.name} to {target.name}: {damage}")
     
@@ -98,7 +96,7 @@ if __name__ == "__main__":
     print("Regulation M-C contents:", regulation_description("M-C"))
     print("Signature moves:", signature_moves("M-C"))
     print("Pokémon that learn 'Follow Me' in reg M-C:", get_pokemon_for_move("Follow Me", regulation="M-C"))
-    print("Moves for 'Venusaur' in reg M-C:", get_moves_for_pokemon("Venusaur", regulation="M-C"))
+    print("Movepool for 'Venusaur' in reg M-C:", get_movepool_for_pokemon("Venusaur", regulation="M-C"))
 
     # You can also set the Pokémon's stats directly. Currently, this will clear any stat stage increases.
     dummy.set_stats({"attack": 400})

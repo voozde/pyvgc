@@ -2,9 +2,14 @@
 
 # Dates use the YYYY-MM-DD format.
 
-- 2026-11-02 (0.0.2.5, current release)
+- 2026-11-03 (0.0.2.6, current release)
+    - Rename regulation learnsets to movepools and add Pokémon movesets of up
+      to four regulation-legal moves.
+    - Allow equipped moves to be passed directly into damage calculations.
+
+- 2026-11-02 (0.0.2.5)
     - Bind loaded Pokémon to their regulation for move lookups.
-    - Consolidate regulation learnset indexes and avoid eager circular imports.
+    - Consolidate regulation movepool indexes and avoid eager circular imports.
 
 - 2026-11-02 (0.0.2.4, current release)
     - Updated package version metadata.
@@ -15,7 +20,7 @@
 - 2026-11-02 (0.0.2.1 release)
     - Added separate `CHAMPIONS_SINGLES` battle logic with singles screen
       modifiers; Cartridge and Simulator remain doubles defaults.
-    - Added `get_pokemon_for_move` and `get_moves_for_pokemon` utility functions.
+    - Added Pokémon movepool and move-user lookup utility functions.
     - Fixed various code issues and improved documentation.
 
 - 2026-11-01 (0.0.1, first pypi test release)
@@ -28,7 +33,7 @@
         -> Does not currently consider abilities or items in damage calculation (immunities and others)
         -> All around, extremely basic and needs to be improved.
     - Support for stat boosts.
-    - Added move, learnset, and Pokémon-for-move lookups.
+    - Added move, movepool, and Pokémon-for-move lookups.
     - Added independent `Cartridge-Champions-Release-2026` and
       `Simulator-Champions-Release-2026` battle logics.
     - Added named `BattleLogic` versions and regulation-scoped loaders.
