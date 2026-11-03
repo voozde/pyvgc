@@ -34,6 +34,7 @@ Adamant Nature
 - Helping Hand""",
     regulation="M-C",
 )
+print(pokemon.info())
 print(export_showdown_pokemon(pokemon))
 ```
 
