@@ -1,6 +1,7 @@
 # Pokémon Champions Data Science Package
 
 # Dates use the YYYY-MM-DD format.
+# Alpha Changelog. On stable releases, this will be removed and replaced with a more formal changelog.
 
 - 2026-11-03 (0.0.3, current release)
     - Enable importing and exporting regulation-legal Pokémon Showdown sets.

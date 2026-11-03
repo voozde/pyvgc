@@ -37,14 +37,19 @@ if __name__ == "__main__":
         item="Sitrus Berry",
     )
     dummy.moveset = ("Fake Out", "Flare Blitz", "Darkest Lariat", "Protect")
+    # You can specify a moveset of up to 4 moves, but it is not required.
+    # If you don't specify it, the Pokémon will have an empty moveset.
 
     # Print information about the Pokémon, including its stats and moveset.
     print("GaoGaen")
     print("------------------------------------------")
     print(dummy.info())
 
+    print("Moveset:")
     for move in dummy.moveset:
         print(f"Move: {move.name}, Type: {move.type}, Power: {move.base_power}")
+
+    print("Movepool:")
     for move in dummy.movepool:
         print(f"Move: {move.name}, Type: {move.type}, Power: {move.base_power}")
 
