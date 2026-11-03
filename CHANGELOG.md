@@ -2,6 +2,9 @@
 
 # Dates use the YYYY-MM-DD format.
 
+- 2026-11-03 (0.0.3, current release)
+    - Enable importing and exporting regulation-legal Pokémon Showdown sets.
+
 - 2026-11-03 (0.0.2.6, current release)
     - Renamed regulation learnsets to movepools and added Pokémon movesets of up
       to four regulation-legal moves.

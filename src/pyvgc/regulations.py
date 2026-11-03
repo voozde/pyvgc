@@ -218,6 +218,8 @@ class RegulationData:
         stat_stages: Optional[Mapping[str, int]] = None,
         item: Optional[Union[str, Item]] = None,
         moveset: Optional[Iterable[Union[str, Move]]] = None,
+        nickname: Optional[str] = None,
+        ability: Optional[str] = None,
     ) -> Pokemon:
         """Load a legal Pokémon with optional regulation-valid item."""
         if not isinstance(name, str) or not name.strip():
@@ -245,6 +247,8 @@ class RegulationData:
             item=legal_item,
             regulation=self.name,
             moveset=moveset,
+            nickname=nickname,
+            ability=ability,
         )
 
     def get_movepool_for_pokemon(self, name: str) -> tuple[Move, ...]:

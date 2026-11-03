@@ -34,6 +34,7 @@ class Pokemon:
     __slots__ = (
         "number", "name", "hp", "attack", "defense", "special_attack",
         "special_defense", "speed", "_types", "_item", "nature",
+        "_stat_training", "_nickname", "_ability",
         "_pre_stage_stats", "_stat_stages",
         "_logic", "_regulation", "_moveset",
     )
@@ -56,6 +57,8 @@ class Pokemon:
         item: Optional[Union[str, Item]] = None,
         regulation: Optional[str] = None,
         moveset: Optional[Iterable[Union[str, Move]]] = None,
+        nickname: Optional[str] = None,
+        ability: Optional[str] = None,
     ) -> None:
         """Create a Pokémon from base stats and optional battle settings.
 
@@ -86,9 +89,14 @@ class Pokemon:
             raise ValueError(
                 f"stat training cannot exceed {logic.max_total_training} total points"
             )
+        self._stat_training = dict(training)
+        self._nickname = None
+        self._ability = None
 
         self.number = number
         self.name = name
+        self.nickname = nickname
+        self.ability = ability
         self.hp = hp + logic.base_hp_increase + training["hp"]
         self.attack = attack + logic.base_stat_increase + training["attack"]
         self.defense = defense + logic.base_stat_increase + training["defense"]
@@ -202,6 +210,58 @@ class Pokemon:
         """Return the regulation associated with this Pokémon, if specified."""
         return self._regulation
 
+    @property
+    def stat_training(self) -> Mapping[str, int]:
+        """Return the configured training values without exposing mutable state."""
+        return MappingProxyType(self._stat_training)
+
+    @property
+    def nickname(self) -> Optional[str]:
+        """Return this Pokémon's optional nickname."""
+        return self._nickname
+
+    @nickname.setter
+    def nickname(self, nickname: Optional[str]) -> None:
+        if nickname is not None and (
+            not isinstance(nickname, str) or not nickname.strip()
+        ):
+            raise ValueError("nickname must be a non-empty string or None")
+        self._nickname = None if nickname is None else nickname.strip()
+
+    @property
+    def ability(self) -> Optional[str]:
+        """Return this Pokémon's selected ability, if specified."""
+        return self._ability
+
+    @ability.setter
+    def ability(self, ability: Optional[str]) -> None:
+        self.set_ability(ability)
+
+    def set_ability(self, ability: Optional[str]) -> None:
+        """Set a regulation-legal ability for this Pokémon."""
+        if ability is None:
+            self._ability = None
+            return
+        if not isinstance(ability, str) or not ability.strip():
+            raise ValueError("ability must be a non-empty string or None")
+        if self._regulation is None:
+            raise ValueError(
+                "A regulation is required to validate this Pokémon's ability"
+            )
+        from .regulations import load_regulation
+
+        regulation = load_regulation(self._regulation)
+        legal_abilities = regulation.abilities.get(self.name, ())
+        normalized = ability.strip().casefold()
+        for legal_ability in legal_abilities:
+            if legal_ability.casefold() == normalized:
+                self._ability = legal_ability
+                return
+        raise ValueError(
+            f"Ability {ability!r} is unavailable to {self.name} "
+            f"in regulation {regulation.name}"
+        )
+
     def set_types(self, types: Iterable[str]) -> None:
         """Set one or two valid, distinct Pokémon types.
 
@@ -255,6 +315,8 @@ class Pokemon:
         item: Optional[Union[str, Item]] = None,
         regulation: Optional[str] = None,
         moveset: Optional[Iterable[Union[str, Move]]] = None,
+        nickname: Optional[str] = None,
+        ability: Optional[str] = None,
     ) -> "Pokemon":
         """Load one roster form with optional settings and a movepool regulation."""
         if not isinstance(name, str) or not name.strip():
@@ -272,6 +334,8 @@ class Pokemon:
             item=item,
             regulation=regulation,
             moveset=moveset,
+            nickname=nickname,
+            ability=ability,
         )
 
     @property
