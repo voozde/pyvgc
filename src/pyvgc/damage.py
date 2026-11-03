@@ -84,7 +84,8 @@ def _resolve_move_parameters(
     move_type: str | None,
     special: bool | None,
     move: Move | None,
-) -> tuple[int, str, bool]:
+    spread: bool | None,
+) -> tuple[int, str, bool, bool]:
     """Resolve either a custom Move or the legacy raw damage parameters."""
     if move is not None:
         if power is not None or move_type is not None:
@@ -100,7 +101,7 @@ def _resolve_move_parameters(
     if selected_move is None:
         if power is None or move_type is None:
             raise ValueError("power and move_type are required without a Move")
-        return power, move_type, bool(special)
+        return power, move_type, bool(special), bool(spread)
 
     if not isinstance(selected_move, Move):
         raise TypeError("move must be a Move instance")
@@ -111,7 +112,15 @@ def _resolve_move_parameters(
     move_is_special = selected_move.category == "Special"
     if special is not None and special != move_is_special:
         raise ValueError("special must match the Move category")
-    return selected_move.base_power, selected_move.type, move_is_special
+    move_is_spread = (
+        selected_move.is_spread if spread is None else spread
+    )
+    return (
+        selected_move.base_power,
+        selected_move.type,
+        move_is_special,
+        move_is_spread,
+    )
 
 
 def damage_rolls(
@@ -127,7 +136,7 @@ def damage_rolls(
     reflect: bool = False,
     aurora_veil: bool = False,
     helping_hand: bool = False,
-    spread: bool = False,
+    spread: bool | None = None,
     move: Move | None = None,
 ) -> DamageRolls:
     """Return all 16 normal and 16 critical damage rolls.
@@ -136,10 +145,11 @@ def damage_rolls(
     Damage is floored at every formula step, as in the games. Critical hits
     use the selected logic's critical multiplier and ignore the relevant stat
     stages. Non-immune hits deal at least 1 damage. Modifier flags are disabled
-    by default; ``spread=False`` represents a single-target move.
+    by default, the move's target metadata determines it. Set ``spread``
+    explicitly to override that metadata.
     """
-    power, move_type, special = _resolve_move_parameters(
-        power, move_type, special, move
+    power, move_type, special, spread = _resolve_move_parameters(
+        power, move_type, special, move, spread
     )
     if not all(
         type(value) is int and value > 0
@@ -212,20 +222,21 @@ def calculate_damage(
     reflect: bool = False,
     aurora_veil: bool = False,
     helping_hand: bool = False,
-    spread: bool = False,
+    spread: bool | None = None,
     move: Move | None = None,
 ) -> DamageRolls:
     """Calculate damage rolls using two Pokémon and their current battle state.
 
     The Pokémon models provide state only. This function owns the damage
     calculation, including critical-hit stat-stage handling and percentages.
-    Modifier flags are disabled by default. ``spread=False`` represents a
-    single-target move.
+    Other modifier flags are disabled by default. When a move object is
+    provided, its spread metadata is used unless ``spread`` is explicitly set.
+    Raw power/type calculations default to single-target behavior.
     """
     from .pokemon import Pokemon
 
-    power, move_type, special = _resolve_move_parameters(
-        power, move_type, special, move
+    power, move_type, special, spread = _resolve_move_parameters(
+        power, move_type, special, move, spread
     )
     if not isinstance(attacker, Pokemon) or not isinstance(defender, Pokemon):
         raise TypeError("attacker and defender must be Pokemon instances")

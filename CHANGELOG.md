@@ -1,9 +1,13 @@
 # Pokémon Champions Data Science Package
-
-# Dates use the YYYY-MM-DD format.
 # Alpha Changelog. On stable releases, this will be removed and replaced with a more formal changelog.
 
-- 2026-11-03 (0.0.3, current release)
+# Dates use the YYYY-MM-DD format.
+
+- 2026-11-03 (0.0.3.1, current release)
+    - Add spread-target metadata to moves and infer the spread modifier during
+      damage calculations that receive a move.
+
+- 2026-11-03 (0.0.3)
     - Enable importing and exporting regulation-legal Pokémon Showdown sets.
 
 - 2026-11-03 (0.0.2.6, current release)

@@ -11,7 +11,7 @@ from .constants import ALWAYS_HIT_VALUE
 
 
 class Move(NamedTuple):
-    """The currently implemented, effect-independent move attributes."""
+    """Move attributes, including whether the move targets multiple Pokémon."""
 
     name: str
     category: str
@@ -19,10 +19,17 @@ class Move(NamedTuple):
     base_power: Optional[int]
     type: str
     pp: int
+    is_spread: bool = False
 
     @classmethod
     def from_row(cls, row: Mapping[str, str]) -> "Move":
         """Create a move from one move-data CSV row."""
+        spread_value = row["IsSpread"].strip().casefold()
+        if spread_value not in {"true", "false"}:
+            raise ValueError(
+                f"invalid IsSpread value for {row['MoveName']!r}: "
+                f"{row['IsSpread']!r}"
+            )
         return cls(
             name=row["MoveName"],
             category=row["Category"],
@@ -38,6 +45,7 @@ class Move(NamedTuple):
             ),
             type=row["Type"],
             pp=int(row["PP"]),
+            is_spread=spread_value == "true",
         )
 
 
@@ -48,8 +56,9 @@ def create_custom_move(
     category: str,
     accuracy: Optional[int] = 100,
     pp: int = 10,
+    is_spread: bool = False,
 ) -> Move:
-    """Create a custom move without adding it to the move database."""
+    """Create a custom move, optionally marking it as a spread-target move."""
     if not isinstance(category, str):
         raise ValueError(
             "move category must be 'Physical', 'Special', or 'Status'"
@@ -68,6 +77,7 @@ def create_custom_move(
         base_power=base_power,
         type=move_type,
         pp=pp,
+        is_spread=is_spread,
     )
 
 

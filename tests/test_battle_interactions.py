@@ -86,6 +86,35 @@ class BattleInteractionTests(unittest.TestCase):
             equivalent_rolls,
         )
 
+    def test_custom_move_can_be_marked_as_spread(self):
+        """A custom move can supply its spread behavior to damage calculations."""
+        spread_move = create_custom_move(
+            "Custom Spread",
+            base_power=40,
+            move_type="Fire",
+            category="Special",
+            is_spread=True,
+        )
+
+        inferred = calculate_damage(
+            self.incineroar_base,
+            self.venusaur_base,
+            move=spread_move,
+            percentage=False,
+        )
+        explicit = calculate_damage(
+            self.incineroar_base,
+            self.venusaur_base,
+            power=40,
+            move_type="Fire",
+            special=True,
+            percentage=False,
+            spread=True,
+        )
+
+        self.assertTrue(spread_move.is_spread)
+        self.assertEqual(inferred, explicit)
+
     def test_custom_move_rejects_only_invalid_categories_and_status_power(self):
         """Only category and status base power are restricted on creation."""
         with self.assertRaises(ValueError):
@@ -343,6 +372,54 @@ class BattleInteractionTests(unittest.TestCase):
             44, 44, 44, 44, 48, 48, 48, 48,
             48, 48, 50, 50, 50, 50, 50, 54,
         ])
+
+    def test_spread_move_metadata_is_used_by_default(self):
+        """A move's spread flag controls doubles damage without a separate flag."""
+        regulation = load_regulation(
+            "M-C",
+            battle_logic=get_battle_logic(
+                "Cartridge-Champions-Release-2026"
+            ),
+        )
+        excadrill = regulation.load_pokemon(
+            "Excadrill",
+            nature="Adamant",
+            stat_training={"attack": 4},
+            moveset=("Rock Slide",),
+        )
+        incineroar = regulation.load_pokemon(
+            "Incineroar",
+            stat_training={"hp": 32},
+        )
+        expected = [
+            68, 68, 68, 70, 70, 72, 72, 72,
+            74, 74, 76, 76, 76, 78, 78, 80,
+        ]
+
+        inferred = regulation.battle_logic.calculate_damage(
+            excadrill,
+            incineroar,
+            move=excadrill.moveset[0],
+            percentage=False,
+        )
+        explicitly_spread = regulation.battle_logic.calculate_damage(
+            excadrill,
+            incineroar,
+            move=excadrill.moveset[0],
+            percentage=False,
+            spread=True,
+        )
+        explicitly_single_target = regulation.battle_logic.calculate_damage(
+            excadrill,
+            incineroar,
+            move=excadrill.moveset[0],
+            percentage=False,
+            spread=False,
+        )
+
+        self.assertEqual(inferred["normal"], expected)
+        self.assertEqual(explicitly_spread, inferred)
+        self.assertNotEqual(explicitly_single_target["normal"], expected)
 
     def test_screens_do_not_stack(self):
         """Multiple applicable screen flags still apply one doubles modifier."""

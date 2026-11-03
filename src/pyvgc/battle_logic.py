@@ -79,7 +79,7 @@ class BattleLogic:
         reflect: bool = False,
         aurora_veil: bool = False,
         helping_hand: bool = False,
-        spread: bool = False,
+        spread: Optional[bool] = None,
         move: Optional["Move"] = None,
     ) -> "DamageRolls":
         """Calculate damage using this battle logic and two Pokémon.

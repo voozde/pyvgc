@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyvgc"
-version = "0.0.3"
+version = "0.0.3.1"
 description = "A Pokémon Champions data science package."
 readme = "README.md"
 requires-python = ">=3.9"

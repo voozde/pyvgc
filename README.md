@@ -42,6 +42,22 @@ Only fields represented by the package are supported. Pokémon are fixed at
 the selected battle logic's level (50 for the current regulations). Ability
 is retained as set metadata and is not currently applied in battle calculations.
 
+## Spread moves in doubles
+
+Each bundled move records whether it targets multiple Pokémon in doubles.
+When a damaging `Move` is passed to a damage calculation, its spread
+classification is used automatically. Use `spread=True` or `spread=False` to
+override it. Calculations using only raw power and type parameters are
+single-target unless `spread=True` is supplied.
+
+## Bugs / Known Issues
+32 HP trained Incineroar being attacked by an Adamant Excadrill with no Attack
+training using Rock Slide produces `66, 66, 66, 68, 68, 70, 70, 70, 72, 72, 74, 74, 74, 76,
+76, 78`. The nerd-of-now calculator's reported
+`68, 68, 68, 70, 70, 72, 72, 72, 74, 74, 76, 76, 76, 78, 78, 80`.
+
+I have no idea what causes this
+
 # AI / Additional Sources Disclaimer
 
 Current development is assisted by the VSCode Copilot Plugin, which settled on GPT-5.6-Luna.

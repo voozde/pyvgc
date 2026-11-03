@@ -161,7 +161,7 @@ Adamant Nature
 
     def test_package_exposes_current_version(self):
         """The package exposes the declared distribution version."""
-        self.assertEqual(__version__, "0.0.3")
+        self.assertEqual(__version__, "0.0.3.1")
 
     def test_regulation_representation_is_concise(self):
         """Loaded regulations do not print their complete data mappings."""
@@ -264,6 +264,20 @@ Adamant Nature
         self.assertEqual(move.type, "Poison")
         self.assertEqual(move.pp, 20)
 
+    def test_move_records_identify_spread_targets(self):
+        """Bundled move models retain doubles spread-target metadata."""
+        for move_name in ("Rock Slide", "Surf", "Earthquake", "Teeter Dance"):
+            with self.subTest(move=move_name):
+                self.assertTrue(get_move(move_name).is_spread)
+        for move_name in ("Flamethrower", "Helping Hand", "Protect"):
+            with self.subTest(move=move_name):
+                self.assertFalse(get_move(move_name).is_spread)
+
+        for regulation_name in ("M-A", "M-B", "M-C"):
+            regulation = load_regulation(regulation_name)
+            for move in regulation.moves:
+                self.assertEqual(move.is_spread, get_move(move.name).is_spread)
+
     def test_move_database_matches_current_champions_snapshot(self):
         """The move CSV includes the complete current Champions move list."""
         move_csv = resources.files("pyvgc.data").joinpath(
@@ -273,6 +287,10 @@ Adamant Nature
             rows = list(csv.DictReader(file))
 
         self.assertEqual(len(rows), 512)
+        self.assertIn("IsSpread", rows[0])
+        self.assertTrue(all(
+            row["IsSpread"] in {"true", "false"} for row in rows
+        ))
         self.assertEqual(
             len({row["MoveName"].casefold() for row in rows}),
             len(rows),
@@ -300,6 +318,7 @@ Adamant Nature
         self.assertEqual(move.base_power, 60)
         self.assertEqual(status.category, "Status")
         self.assertIsNone(status.base_power)
+        self.assertFalse(status.is_spread)
 
     def test_movepool_lookups_are_alphabetical_and_bidirectional(self):
         """Pokémon-to-move and move-to-Pokémon lookups use cached indexes."""

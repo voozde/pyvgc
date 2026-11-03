@@ -28,7 +28,7 @@ from .utils import (
 try:
     __version__ = version("pyvgc")
 except PackageNotFoundError:
-    __version__ = "0.0.3"
+    __version__ = "0.0.3.1"
 
 __all__ = [
     "__version__",
