@@ -12,14 +12,16 @@ It requires only a Python3.9+ environment and the standard library. It is curren
 
 The current version supports the current Pokémon Champions regulations (m-a,m-b and m-c)
 
-For some examples of what you can currently do, please check examples.py.
+For some examples of what you can currently do, please check examples.py or the pyvgc_tutorial.ipynb notebook.
 
 As this currently a personal side-project, expect updates to be slow. 
 
-AI / Additional Sources Disclaimer
 
--> Current development is assisted by the VSCode Copilot Plugin, which settled on GPT-5.6-Luna.
+# AI / Additional Sources Disclaimer
 
--> Bundled battle-item reference data with effect descriptions crawled from [Serebii's ItemDex](https://www.serebii.net/itemdex/).
+Current development is assisted by the VSCode Copilot Plugin, which settled on GPT-5.6-Luna.
 
-- Repository in development. 
+Bundled battle-item reference data with effect descriptions crawled from [Serebii's ItemDex](https://www.serebii.net/itemdex/).
+
+Current development is contrasted against the nerd of now calculator:
+ - [https://nerd-of-now.github.io/NCP-VGC-Damage-Calculator/](https://nerd-of-now.github.io/NCP-VGC-Damage-Calculator/)
