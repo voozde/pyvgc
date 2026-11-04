@@ -1,0 +1,3746 @@
+[
+  {
+    "rank": 1,
+    "player": "Kyle Livinghouse",
+    "team": [
+      {
+        "name": "Sneasler",
+        "item": "White Herb",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Close Combat",
+          "Dire Claw",
+          "Rock Tomb",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Whimsicott",
+        "item": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid",
+        "moves": [
+          "Protect",
+          "Encore",
+          "Moonblast",
+          "Tailwind"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Weather Ball",
+          "Protect",
+          "Heat Wave",
+          "Solar Beam"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Sucker Punch",
+          "Iron Head",
+          "Kowtow Cleave",
+          "Low Kick"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly",
+        "moves": [
+          "Rock Slide",
+          "Earthquake",
+          "Dragon Claw",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Froslass",
+        "item": "Froslassite",
+        "ability": "Cursed Body",
+        "nature": "Timid",
+        "moves": [
+          "Blizzard",
+          "Aurora Veil",
+          "Shadow Ball",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 2,
+    "player": "Renzo Navarro",
+    "team": [
+      {
+        "name": "Staraptor",
+        "item": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly",
+        "moves": [
+          "Close Combat",
+          "Brave Bird",
+          "Tailwind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Zap Cannon",
+          "Focus Blast",
+          "Fake Out",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Hisuian Arcanine",
+        "item": "Focus Sash",
+        "ability": "Rock Head",
+        "nature": "Jolly",
+        "moves": [
+          "Flare Blitz",
+          "Extreme Speed",
+          "Rock Slide",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Primarina",
+        "item": "Leftovers",
+        "ability": "Liquid Voice",
+        "nature": "Modest",
+        "moves": [
+          "Hyper Voice",
+          "Moonblast",
+          "Calm Mind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Gholdengo",
+        "item": "Life Orb",
+        "ability": "Good as Gold",
+        "nature": "Modest",
+        "moves": [
+          "Make It Rain",
+          "Shadow Ball",
+          "Nasty Plot",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "item": "Miracle Seed",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Wood Hammer",
+          "Grassy Glide",
+          "High Horsepower",
+          "Fake Out"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "player": "Arthur Mosca",
+    "team": [
+      {
+        "name": "Tyranitar",
+        "item": "Tyranitarite",
+        "ability": "Sand Stream",
+        "nature": "Jolly",
+        "moves": [
+          "Rock Slide",
+          "Knock Off",
+          "Dragon Dance",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Gholdengo",
+        "item": "Life Orb",
+        "ability": "Good as Gold",
+        "nature": "Modest",
+        "moves": [
+          "Shadow Ball",
+          "Make It Rain",
+          "Nasty Plot",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Excadrill",
+        "item": "Focus Sash",
+        "ability": "Sand Rush",
+        "nature": "Adamant",
+        "moves": [
+          "High Horsepower",
+          "Iron Head",
+          "Rock Slide",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Milotic",
+        "item": "Sitrus Berry",
+        "ability": "Competitive",
+        "nature": "Calm",
+        "moves": [
+          "Scald",
+          "Ice Beam",
+          "Icy Wind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Staraptor",
+        "item": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly",
+        "moves": [
+          "Brave Bird",
+          "Close Combat",
+          "Tailwind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sinistcha",
+        "item": "Rocky Helmet",
+        "ability": "Hospitality",
+        "nature": "Bold",
+        "moves": [
+          "Matcha Gotcha",
+          "Strength Sap",
+          "Rage Powder",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 4,
+    "player": "Zach Holowiak",
+    "team": [
+      {
+        "name": "Rillaboom",
+        "item": "Miracle Seed",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Grassy Glide",
+          "Wood Hammer",
+          "Fake Out",
+          "U-turn"
+        ]
+      },
+      {
+        "name": "Blaziken",
+        "item": "Blazikenite",
+        "ability": "Speed Boost",
+        "nature": "Adamant",
+        "moves": [
+          "Detect",
+          "Flare Blitz",
+          "Close Combat",
+          "Rock Slide"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Black Glasses",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Sucker Punch",
+          "Kowtow Cleave",
+          "Swords Dance",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Grassy Seed",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Rock Slide",
+          "Close Combat",
+          "Dire Claw",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Primarina",
+        "item": "Leftovers",
+        "ability": "Liquid Voice",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Calm Mind",
+          "Hyper Voice",
+          "Moonblast"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Fake Out",
+          "Zap Cannon",
+          "Focus Blast",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 5,
+    "player": "David Rodriguez",
+    "team": [
+      {
+        "name": "Kingambit",
+        "item": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Kowtow Cleave",
+          "Low Kick",
+          "Sucker Punch",
+          "Iron Head"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly",
+        "moves": [
+          "Dragon Claw",
+          "Earthquake",
+          "Rock Slide",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Whimsicott",
+        "item": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid",
+        "moves": [
+          "Moonblast",
+          "Tailwind",
+          "Encore",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Basculegion",
+        "item": "Mystic Water",
+        "ability": "Adaptability",
+        "nature": "Adamant",
+        "moves": [
+          "Wave Crash",
+          "Aqua Jet",
+          "Last Respects",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Weather Ball",
+          "Heat Wave",
+          "Solar Beam",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "White Herb",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Close Combat",
+          "Dire Claw",
+          "Fake Out",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 6,
+    "player": "Otoniel Longorio López",
+    "team": [
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Heat Wave",
+          "Weather Ball",
+          "Solar Beam"
+        ]
+      },
+      {
+        "name": "Farigiraf",
+        "item": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Bold",
+        "moves": [
+          "Psychic",
+          "Trick Room",
+          "Thunderbolt",
+          "Helping Hand"
+        ]
+      },
+      {
+        "name": "Aerodactyl",
+        "item": "Aerodactylite",
+        "ability": "Unnerve",
+        "nature": "Jolly",
+        "moves": [
+          "Tailwind",
+          "Rock Slide",
+          "Protect",
+          "Dual Wingbeat"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Focus Sash",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Low Kick",
+          "Kowtow Cleave",
+          "Iron Head",
+          "Sucker Punch"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant",
+        "moves": [
+          "Earthquake",
+          "Dragon Claw",
+          "Stomping Tantrum",
+          "Rock Slide"
+        ]
+      },
+      {
+        "name": "Sylveon",
+        "item": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest",
+        "moves": [
+          "Detect",
+          "Hyper Voice",
+          "Hyper Beam",
+          "Quick Attack"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 7,
+    "player": "Chase Matteo",
+    "team": [
+      {
+        "name": "Grimmsnarl",
+        "item": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Impish",
+        "moves": [
+          "Light Screen",
+          "Reflect",
+          "Parting Shot",
+          "Spirit Break"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Sitrus Berry",
+        "ability": "Drizzle",
+        "nature": "Calm",
+        "moves": [
+          "Weather Ball",
+          "Hurricane",
+          "Protect",
+          "Tailwind"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant",
+        "moves": [
+          "Dragon Claw",
+          "Earthquake",
+          "Rock Slide",
+          "Bulldoze"
+        ]
+      },
+      {
+        "name": "Venusaur",
+        "item": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Modest",
+        "moves": [
+          "Sludge Bomb",
+          "Sleep Powder",
+          "Earth Power",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest",
+        "moves": [
+          "Dragon Pulse",
+          "Protect",
+          "Electro Shot",
+          "Snarl"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Heat Wave",
+          "Weather Ball",
+          "Hurricane"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 8,
+    "player": "Luis Perez Alcocer",
+    "team": [
+      {
+        "name": "Incineroar",
+        "item": "Leftovers",
+        "ability": "Intimidate",
+        "nature": "Relaxed",
+        "moves": [
+          "Fake Out",
+          "Snarl",
+          "Flare Blitz",
+          "Parting Shot"
+        ]
+      },
+      {
+        "name": "Venusaur",
+        "item": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Modest",
+        "moves": [
+          "Earth Power",
+          "Sludge Bomb",
+          "Sleep Powder",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Heat Wave",
+          "Ancient Power",
+          "Weather Ball",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Garchompite Z",
+        "ability": "Rough Skin",
+        "nature": "Modest",
+        "moves": [
+          "Power Gem",
+          "Draco Meteor",
+          "Earth Power",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sylveon",
+        "item": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest",
+        "moves": [
+          "Detect",
+          "Hyper Voice",
+          "Yawn",
+          "Quick Attack"
+        ]
+      },
+      {
+        "name": "Farigiraf",
+        "item": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Modest",
+        "moves": [
+          "Psychic",
+          "Protect",
+          "Trick Room",
+          "Thunderbolt"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 9,
+    "player": "Jimmy Suarez",
+    "team": [
+      {
+        "name": "Eternal Flower Floette",
+        "item": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest",
+        "moves": [
+          "Moonblast",
+          "Dazzling Gleam",
+          "Calm Mind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Basculegion",
+        "item": "Choice Scarf",
+        "ability": "Adaptability",
+        "nature": "Jolly",
+        "moves": [
+          "Wave Crash",
+          "Last Respects",
+          "Flip Turn",
+          "Soak"
+        ]
+      },
+      {
+        "name": "Volcarona",
+        "item": "Grassy Seed",
+        "ability": "Flame Body",
+        "nature": "Timid",
+        "moves": [
+          "Heat Wave",
+          "Giga Drain",
+          "Quiver Dance",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish",
+        "moves": [
+          "Fake Out",
+          "Flare Blitz",
+          "Throat Chop",
+          "Parting Shot"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "item": "Miracle Seed",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Fake Out",
+          "Grassy Glide",
+          "Wood Hammer",
+          "U-turn"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Fake Out",
+          "Zap Cannon",
+          "Focus Blast",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 10,
+    "player": "alexander canseco salas",
+    "team": [
+      {
+        "name": "Sneasler",
+        "item": "Focus Sash",
+        "ability": "Poison Touch",
+        "nature": "Jolly",
+        "moves": [
+          "Close Combat",
+          "Rock Slide",
+          "Poison Jab",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Farigiraf",
+        "item": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Bold",
+        "moves": [
+          "Helping Hand",
+          "Psychic",
+          "Protect",
+          "Trick Room"
+        ]
+      },
+      {
+        "name": "Staraptor",
+        "item": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly",
+        "moves": [
+          "Brave Bird",
+          "Close Combat",
+          "Tailwind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Delphox",
+        "item": "Delphoxite",
+        "ability": "Blaze",
+        "nature": "Timid",
+        "moves": [
+          "Heat Wave",
+          "Psychic",
+          "Nasty Plot",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Torkoal",
+        "item": "Charcoal",
+        "ability": "Drought",
+        "nature": "Quiet",
+        "moves": [
+          "Eruption",
+          "Earth Power",
+          "Weather Ball",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Life Orb",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Kowtow Cleave",
+          "Sucker Punch",
+          "Iron Head",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 11,
+    "player": "Ernesto Serpa",
+    "team": [
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful",
+        "moves": [
+          "Fake Out",
+          "Flare Blitz",
+          "Snarl",
+          "Parting Shot"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Focus Sash",
+        "ability": "Poison Touch",
+        "nature": "Jolly",
+        "moves": [
+          "Poison Jab",
+          "Close Combat",
+          "Fake Out",
+          "Quick Guard"
+        ]
+      },
+      {
+        "name": "Eternal Flower Floette",
+        "item": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Dazzling Gleam",
+          "Draining Kiss",
+          "Calm Mind"
+        ]
+      },
+      {
+        "name": "Sinistcha",
+        "item": "Occa Berry",
+        "ability": "Hospitality",
+        "nature": "Bold",
+        "moves": [
+          "Matcha Gotcha",
+          "Trick Room",
+          "Rage Powder",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Delphox",
+        "item": "Delphoxite",
+        "ability": "Blaze",
+        "nature": "Timid",
+        "moves": [
+          "Heat Wave",
+          "Nasty Plot",
+          "Psychic",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Life Orb",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Kowtow Cleave",
+          "Sucker Punch",
+          "Swords Dance",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 12,
+    "player": "Jonathan Josue Barradas Ruiz",
+    "team": [
+      {
+        "name": "Golisopod",
+        "item": "Golisopite",
+        "ability": "Emergency Exit",
+        "nature": "Adamant",
+        "moves": [
+          "Protect",
+          "Leech Life",
+          "Iron Head",
+          "Sucker Punch"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Timid",
+        "moves": [
+          "Electro Shot",
+          "Dragon Pulse",
+          "Snarl",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Grimmsnarl",
+        "item": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Careful",
+        "moves": [
+          "Spirit Break",
+          "Reflect",
+          "Light Screen",
+          "Parting Shot"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Mystic Water",
+        "ability": "Drizzle",
+        "nature": "Modest",
+        "moves": [
+          "Weather Ball",
+          "Hurricane",
+          "Muddy Water",
+          "Tailwind"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite X",
+        "ability": "Lightning Rod",
+        "nature": "Jolly",
+        "moves": [
+          "Volt Switch",
+          "Fake Out",
+          "Volt Tackle",
+          "Feint"
+        ]
+      },
+      {
+        "name": "Female Basculegion",
+        "item": "Focus Sash",
+        "ability": "Swift Swim",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Muddy Water",
+          "Shadow Ball",
+          "Ice Beam"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 13,
+    "player": "Emanuel Hernandez",
+    "team": [
+      {
+        "name": "Primarina",
+        "item": "Leftovers",
+        "ability": "Liquid Voice",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Hyper Voice",
+          "Moonblast",
+          "Calm Mind"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "item": "Sitrus Berry",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Wood Hammer",
+          "Grassy Glide",
+          "High Horsepower",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Protect",
+          "Zap Cannon",
+          "Focus Blast",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "White Herb",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Protect",
+          "Close Combat",
+          "Dire Claw",
+          "Rock Slide"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Life Orb",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Protect",
+          "Kowtow Cleave",
+          "Sucker Punch",
+          "Swords Dance"
+        ]
+      },
+      {
+        "name": "Hisuian Arcanine",
+        "item": "Focus Sash",
+        "ability": "Rock Head",
+        "nature": "Jolly",
+        "moves": [
+          "Protect",
+          "Flare Blitz",
+          "Head Smash",
+          "Extreme Speed"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 14,
+    "player": "Enrique Grimaldo",
+    "team": [
+      {
+        "name": "Sinistcha",
+        "item": "Colbur Berry",
+        "ability": "Hospitality",
+        "nature": "Calm",
+        "moves": [
+          "Matcha Gotcha",
+          "Rage Powder",
+          "Trick Room",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Basculegion",
+        "item": "Choice Scarf",
+        "ability": "Adaptability",
+        "nature": "Jolly",
+        "moves": [
+          "Wave Crash",
+          "Last Respects",
+          "Phantom Force",
+          "Flip Turn"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest",
+        "moves": [
+          "Electro Shot",
+          "Dragon Pulse",
+          "Protect",
+          "Flash Cannon"
+        ]
+      },
+      {
+        "name": "Eternal Flower Floette",
+        "item": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest",
+        "moves": [
+          "Calm Mind",
+          "Moonblast",
+          "Dazzling Gleam",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Focus Sash",
+        "ability": "Drizzle",
+        "nature": "Modest",
+        "moves": [
+          "Hurricane",
+          "Weather Ball",
+          "Tailwind",
+          "Wide Guard"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Adamant",
+        "moves": [
+          "Flare Blitz",
+          "Fake Out",
+          "Parting Shot",
+          "Throat Chop"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 15,
+    "player": "José Javier Loyo Gutiérrez",
+    "team": [
+      {
+        "name": "Garchomp",
+        "item": "Garchompite Z",
+        "ability": "Rough Skin",
+        "nature": "Modest",
+        "moves": [
+          "Draco Meteor",
+          "Earth Power",
+          "Power Gem",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Calm",
+        "moves": [
+          "Dragon Pulse",
+          "Protect",
+          "Electro Shot",
+          "Snarl"
+        ]
+      },
+      {
+        "name": "Venusaur",
+        "item": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Modest",
+        "moves": [
+          "Sludge Bomb",
+          "Leaf Storm",
+          "Protect",
+          "Sleep Powder"
+        ]
+      },
+      {
+        "name": "Grimmsnarl",
+        "item": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Careful",
+        "moves": [
+          "Parting Shot",
+          "Spirit Break",
+          "Reflect",
+          "Light Screen"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Sitrus Berry",
+        "ability": "Drizzle",
+        "nature": "Bold",
+        "moves": [
+          "Weather Ball",
+          "Tailwind",
+          "Hurricane",
+          "Wide Guard"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Timid",
+        "moves": [
+          "Weather Ball",
+          "Heat Wave",
+          "Helping Hand",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 16,
+    "player": "Alejandro Rolón",
+    "team": [
+      {
+        "name": "Eternal Flower Floette",
+        "item": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest",
+        "moves": [
+          "Moonblast",
+          "Dazzling Gleam",
+          "Calm Mind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Basculegion",
+        "item": "Choice Scarf",
+        "ability": "Adaptability",
+        "nature": "Jolly",
+        "moves": [
+          "Last Respects",
+          "Aqua Jet",
+          "Flip Turn",
+          "Wave Crash"
+        ]
+      },
+      {
+        "name": "Vivillon",
+        "item": "Focus Sash",
+        "ability": "Compound Eyes",
+        "nature": "Bashful",
+        "moves": [
+          "Sleep Powder",
+          "Hurricane",
+          "Tailwind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Life Orb",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Sucker Punch",
+          "Iron Head",
+          "Kowtow Cleave",
+          "Low Kick"
+        ]
+      },
+      {
+        "name": "Salamence",
+        "item": "Salamencite",
+        "ability": "Intimidate",
+        "nature": "Timid",
+        "moves": [
+          "Hyper Voice",
+          "Tailwind",
+          "Flamethrower",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful",
+        "moves": [
+          "Parting Shot",
+          "Fake Out",
+          "Flare Blitz",
+          "Throat Chop"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 17,
+    "player": "Joshua Denk",
+    "team": [
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Timid",
+        "moves": [
+          "Heat Wave",
+          "Weather Ball",
+          "Ancient Power",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Venusaur",
+        "item": "Life Orb",
+        "ability": "Chlorophyll",
+        "nature": "Modest",
+        "moves": [
+          "Leaf Storm",
+          "Sludge Bomb",
+          "Earth Power",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant",
+        "moves": [
+          "Dragon Claw",
+          "Earthquake",
+          "Rock Slide",
+          "Stomping Tantrum"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish",
+        "moves": [
+          "Flare Blitz",
+          "Throat Chop",
+          "Fake Out",
+          "Parting Shot"
+        ]
+      },
+      {
+        "name": "Toxapex",
+        "item": "Leftovers",
+        "ability": "Regenerator",
+        "nature": "Relaxed",
+        "moves": [
+          "Infestation",
+          "Toxic",
+          "Wide Guard",
+          "Baneful Bunker"
+        ]
+      },
+      {
+        "name": "Sylveon",
+        "item": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest",
+        "moves": [
+          "Hyper Voice",
+          "Quick Attack",
+          "Yawn",
+          "Detect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 18,
+    "player": "Xavier Méndez",
+    "team": [
+      {
+        "name": "Farigiraf",
+        "item": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Calm",
+        "moves": [
+          "Psychic",
+          "Protect",
+          "Trick Room",
+          "Helping Hand"
+        ]
+      },
+      {
+        "name": "Torkoal",
+        "item": "Charcoal",
+        "ability": "Drought",
+        "nature": "Quiet",
+        "moves": [
+          "Eruption",
+          "Weather Ball",
+          "Earth Power",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Garchompite Z",
+        "ability": "Rough Skin",
+        "nature": "Timid",
+        "moves": [
+          "Draco Meteor",
+          "Earth Power",
+          "Protect",
+          "Power Gem"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Leftovers",
+        "ability": "Intimidate",
+        "nature": "Sassy",
+        "moves": [
+          "Flare Blitz",
+          "Snarl",
+          "Fake Out",
+          "Parting Shot"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "White Herb",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Fake Out",
+          "Dire Claw",
+          "Close Combat",
+          "Rock Slide"
+        ]
+      },
+      {
+        "name": "Sylveon",
+        "item": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Quiet",
+        "moves": [
+          "Hyper Voice",
+          "Detect",
+          "Moonblast",
+          "Yawn"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 19,
+    "player": "Leonardo Chinchilla",
+    "team": [
+      {
+        "name": "Basculegion",
+        "item": "Mystic Water",
+        "ability": "Adaptability",
+        "nature": "Adamant",
+        "moves": [
+          "Last Respects",
+          "Aqua Jet",
+          "Wave Crash",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Kowtow Cleave",
+          "Sucker Punch",
+          "Iron Head",
+          "Low Kick"
+        ]
+      },
+      {
+        "name": "Whimsicott",
+        "item": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid",
+        "moves": [
+          "Moonblast",
+          "Tailwind",
+          "Encore",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "White Herb",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Rock Tomb",
+          "Close Combat",
+          "Dire Claw",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly",
+        "moves": [
+          "Earthquake",
+          "Rock Slide",
+          "Dragon Claw",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Heat Wave",
+          "Weather Ball",
+          "Solar Beam",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 20,
+    "player": "Bruno Pérez",
+    "team": [
+      {
+        "name": "Meowstic",
+        "item": "Sitrus Berry",
+        "ability": "Prankster",
+        "nature": "Calm",
+        "moves": [
+          "Fake Out",
+          "Light Screen",
+          "Rain Dance",
+          "Trick Room"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Focus Sash",
+        "ability": "Drizzle",
+        "nature": "Timid",
+        "moves": [
+          "Weather Ball",
+          "Hurricane",
+          "Tailwind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Garchompite Z",
+        "ability": "Rough Skin",
+        "nature": "Modest",
+        "moves": [
+          "Draco Meteor",
+          "Power Gem",
+          "Earth Power",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Golisopod",
+        "item": "Golisopite",
+        "ability": "Emergency Exit",
+        "nature": "Adamant",
+        "moves": [
+          "Leech Life",
+          "Iron Head",
+          "Sucker Punch",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest",
+        "moves": [
+          "Electro Shot",
+          "Flash Cannon",
+          "Draco Meteor",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Basculegion",
+        "item": "Life Orb",
+        "ability": "Swift Swim",
+        "nature": "Adamant",
+        "moves": [
+          "Wave Crash",
+          "Last Respects",
+          "Aqua Jet",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 21,
+    "player": "Rin Leiba Alamilla",
+    "team": [
+      {
+        "name": "Sylveon",
+        "item": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest",
+        "moves": [
+          "Detect",
+          "Hyper Voice",
+          "Yawn",
+          "Quick Attack"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish",
+        "moves": [
+          "Flare Blitz",
+          "Throat Chop",
+          "Fake Out",
+          "Parting Shot"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Timid",
+        "moves": [
+          "Protect",
+          "Weather Ball",
+          "Ancient Power",
+          "Heat Wave"
+        ]
+      },
+      {
+        "name": "Venusaur",
+        "item": "Life Orb",
+        "ability": "Chlorophyll",
+        "nature": "Modest",
+        "moves": [
+          "Leaf Storm",
+          "Sludge Bomb",
+          "Protect",
+          "Earth Power"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant",
+        "moves": [
+          "Rock Slide",
+          "Dragon Claw",
+          "Stomping Tantrum",
+          "Earthquake"
+        ]
+      },
+      {
+        "name": "Toxapex",
+        "item": "Leftovers",
+        "ability": "Regenerator",
+        "nature": "Bold",
+        "moves": [
+          "Infestation",
+          "Wide Guard",
+          "Baneful Bunker",
+          "Toxic"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 22,
+    "player": "Marcus Dion",
+    "team": [
+      {
+        "name": "Pelipper",
+        "item": "Damp Rock",
+        "ability": "Drizzle",
+        "nature": "Bold",
+        "moves": [
+          "Weather Ball",
+          "Hurricane",
+          "Helping Hand",
+          "Wide Guard"
+        ]
+      },
+      {
+        "name": "Golisopod",
+        "item": "Golisopite",
+        "ability": "Emergency Exit",
+        "nature": "Adamant",
+        "moves": [
+          "Protect",
+          "Leech Life",
+          "Sucker Punch",
+          "Iron Head"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite X",
+        "ability": "Lightning Rod",
+        "nature": "Jolly",
+        "moves": [
+          "Volt Tackle",
+          "Volt Switch",
+          "Fake Out",
+          "Feint"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Electric Seed",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Protect",
+          "Close Combat",
+          "Swords Dance",
+          "Poison Jab"
+        ]
+      },
+      {
+        "name": "Female Basculegion",
+        "item": "Focus Sash",
+        "ability": "Swift Swim",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Muddy Water",
+          "Ice Beam",
+          "Shadow Ball"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Calm",
+        "moves": [
+          "Protect",
+          "Electro Shot",
+          "Snarl",
+          "Dragon Pulse"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 23,
+    "player": "David Israel Soto",
+    "team": [
+      {
+        "name": "Incineroar",
+        "item": "Leftovers",
+        "ability": "Intimidate",
+        "nature": "Relaxed",
+        "moves": [
+          "Flare Blitz",
+          "Parting Shot",
+          "Fake Out",
+          "Snarl"
+        ]
+      },
+      {
+        "name": "Venusaur",
+        "item": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Modest",
+        "moves": [
+          "Sleep Powder",
+          "Sludge Bomb",
+          "Earth Power",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Heat Wave",
+          "Weather Ball",
+          "Ancient Power"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Garchompite Z",
+        "ability": "Rough Skin",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Power Gem",
+          "Earth Power",
+          "Draco Meteor"
+        ]
+      },
+      {
+        "name": "Farigiraf",
+        "item": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Trick Room",
+          "Psychic",
+          "Thunderbolt"
+        ]
+      },
+      {
+        "name": "Sylveon",
+        "item": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest",
+        "moves": [
+          "Detect",
+          "Hyper Voice",
+          "Quick Attack",
+          "Yawn"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 24,
+    "player": "José Ramon Castillo Nuñez",
+    "team": [
+      {
+        "name": "Grimmsnarl",
+        "item": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Careful",
+        "moves": [
+          "Parting Shot",
+          "Light Screen",
+          "Spirit Break",
+          "Reflect"
+        ]
+      },
+      {
+        "name": "Venusaur",
+        "item": "Wide Lens",
+        "ability": "Chlorophyll",
+        "nature": "Calm",
+        "moves": [
+          "Protect",
+          "Sleep Powder",
+          "Giga Drain",
+          "Earth Power"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Weather Ball",
+          "Hurricane",
+          "Heat Wave"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Electro Shot",
+          "Dragon Pulse",
+          "Flash Cannon"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Sitrus Berry",
+        "ability": "Drizzle",
+        "nature": "Bold",
+        "moves": [
+          "Helping Hand",
+          "Tailwind",
+          "Weather Ball",
+          "Hurricane"
+        ]
+      },
+      {
+        "name": "Female Basculegion",
+        "item": "Focus Sash",
+        "ability": "Swift Swim",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Shadow Ball",
+          "Muddy Water",
+          "Ice Beam"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 25,
+    "player": "Aaron Grubbs",
+    "team": [
+      {
+        "name": "Sneasler",
+        "item": "White Herb",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Close Combat",
+          "Dire Claw",
+          "Rock Tomb",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Sucker Punch",
+          "Iron Head",
+          "Kowtow Cleave",
+          "Low Kick"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly",
+        "moves": [
+          "Rock Slide",
+          "Earthquake",
+          "Dragon Claw",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Basculegion",
+        "item": "Mystic Water",
+        "ability": "Adaptability",
+        "nature": "Adamant",
+        "moves": [
+          "Wave Crash",
+          "Last Respects",
+          "Aqua Jet",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Weather Ball",
+          "Protect",
+          "Heat Wave",
+          "Solar Beam"
+        ]
+      },
+      {
+        "name": "Whimsicott",
+        "item": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid",
+        "moves": [
+          "Protect",
+          "Encore",
+          "Moonblast",
+          "Tailwind"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 26,
+    "player": "Jeshua Rivera",
+    "team": [
+      {
+        "name": "Basculegion",
+        "item": "Choice Scarf",
+        "ability": "Adaptability",
+        "nature": "Jolly",
+        "moves": [
+          "Wave Crash",
+          "Last Respects",
+          "Aqua Jet",
+          "Flip Turn"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Heat Wave",
+          "Weather Ball",
+          "Ancient Power",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Electric Seed",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Close Combat",
+          "Poison Jab",
+          "Swords Dance",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite X",
+        "ability": "Lightning Rod",
+        "nature": "Jolly",
+        "moves": [
+          "Volt Tackle",
+          "Volt Switch",
+          "Fake Out",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Whimsicott",
+        "item": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid",
+        "moves": [
+          "Moonblast",
+          "Tailwind",
+          "Protect",
+          "Encore"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Life Orb",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Kowtow Cleave",
+          "Iron Head",
+          "Sucker Punch",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 27,
+    "player": "Preston Gadling",
+    "team": [
+      {
+        "name": "Female Basculegion",
+        "item": "Focus Sash",
+        "ability": "Swift Swim",
+        "nature": "Modest",
+        "moves": [
+          "Muddy Water",
+          "Shadow Ball",
+          "Ice Beam",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Golisopod",
+        "item": "Golisopite",
+        "ability": "Emergency Exit",
+        "nature": "Adamant",
+        "moves": [
+          "Leech Life",
+          "Iron Head",
+          "Sucker Punch",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Damp Rock",
+        "ability": "Drizzle",
+        "nature": "Bold",
+        "moves": [
+          "Weather Ball",
+          "Hurricane",
+          "Helping Hand",
+          "Wide Guard"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite X",
+        "ability": "Lightning Rod",
+        "nature": "Jolly",
+        "moves": [
+          "Volt Tackle",
+          "Feint",
+          "Volt Switch",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Electric Seed",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Close Combat",
+          "Poison Jab",
+          "Swords Dance",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Bold",
+        "moves": [
+          "Electro Shot",
+          "Dragon Pulse",
+          "Snarl",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 28,
+    "player": "Ayraldo azaael Andrade ortiz",
+    "team": [
+      {
+        "name": "Delphox",
+        "item": "Delphoxite",
+        "ability": "Blaze",
+        "nature": "Timid",
+        "moves": [
+          "Protect",
+          "Heat Wave",
+          "Psychic",
+          "Nasty Plot"
+        ]
+      },
+      {
+        "name": "Maushold",
+        "item": "Chople Berry",
+        "ability": "Friend Guard",
+        "nature": "Impish",
+        "moves": [
+          "Protect",
+          "Super Fang",
+          "Feint",
+          "Follow Me"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful",
+        "moves": [
+          "Fake Out",
+          "Snarl",
+          "Flare Blitz",
+          "Parting Shot"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Focus Sash",
+        "ability": "Poison Touch",
+        "nature": "Jolly",
+        "moves": [
+          "Fake Out",
+          "Close Combat",
+          "Poison Jab",
+          "Quick Guard"
+        ]
+      },
+      {
+        "name": "Sinistcha",
+        "item": "Occa Berry",
+        "ability": "Hospitality",
+        "nature": "Bold",
+        "moves": [
+          "Protect",
+          "Matcha Gotcha",
+          "Rage Powder",
+          "Trick Room"
+        ]
+      },
+      {
+        "name": "Blastoise",
+        "item": "Blastoisinite",
+        "ability": "Rain Dish",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Water Spout",
+          "Dark Pulse",
+          "Shell Smash"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 29,
+    "player": "Daniela Hernandez",
+    "team": [
+      {
+        "name": "Venusaur",
+        "item": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Modest",
+        "moves": [
+          "Leaf Storm",
+          "Sludge Bomb",
+          "Sleep Powder",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sylveon",
+        "item": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest",
+        "moves": [
+          "Hyper Voice",
+          "Hyper Beam",
+          "Quick Attack",
+          "Detect"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Zap Cannon",
+          "Focus Blast",
+          "Protect",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest",
+        "moves": [
+          "Weather Ball",
+          "Heat Wave",
+          "Ancient Power",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Chople Berry",
+        "ability": "Intimidate",
+        "nature": "Careful",
+        "moves": [
+          "Flare Blitz",
+          "Throat Chop",
+          "Parting Shot",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant",
+        "moves": [
+          "Earthquake",
+          "Rock Slide",
+          "Dragon Claw",
+          "Stomping Tantrum"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 30,
+    "player": "Ricardo Mendoza",
+    "team": [
+      {
+        "name": "Golisopod",
+        "item": "Golisopite",
+        "ability": "Emergency Exit",
+        "nature": "Adamant",
+        "moves": [
+          "Iron Head",
+          "Close Combat",
+          "Rock Slide",
+          "Leech Life"
+        ]
+      },
+      {
+        "name": "Farigiraf",
+        "item": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Bold",
+        "moves": [
+          "Twin Beam",
+          "Protect",
+          "Trick Room",
+          "Rain Dance"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant",
+        "moves": [
+          "Earthquake",
+          "Dragon Claw",
+          "Rock Slide",
+          "Stomping Tantrum"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Fake Out",
+          "Protect",
+          "Zap Cannon",
+          "Focus Blast"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Focus Sash",
+        "ability": "Drizzle",
+        "nature": "Modest",
+        "moves": [
+          "Hurricane",
+          "Tailwind",
+          "Protect",
+          "Weather Ball"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest",
+        "moves": [
+          "Electro Shot",
+          "Dragon Pulse",
+          "Snarl",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 31,
+    "player": "José Chávez",
+    "team": [
+      {
+        "name": "Sinistcha",
+        "item": "Rocky Helmet",
+        "ability": "Hospitality",
+        "nature": "Bold",
+        "moves": [
+          "Matcha Gotcha",
+          "Strength Sap",
+          "Rage Powder",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Gholdengo",
+        "item": "Life Orb",
+        "ability": "Good as Gold",
+        "nature": "Modest",
+        "moves": [
+          "Shadow Ball",
+          "Make It Rain",
+          "Nasty Plot",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Tyranitar",
+        "item": "Tyranitarite",
+        "ability": "Sand Stream",
+        "nature": "Jolly",
+        "moves": [
+          "Rock Slide",
+          "Knock Off",
+          "Low Kick",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Staraptor",
+        "item": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly",
+        "moves": [
+          "Close Combat",
+          "Brave Bird",
+          "Tailwind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Excadrill",
+        "item": "Focus Sash",
+        "ability": "Sand Rush",
+        "nature": "Adamant",
+        "moves": [
+          "High Horsepower",
+          "Iron Head",
+          "Rock Slide",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Milotic",
+        "item": "Sitrus Berry",
+        "ability": "Competitive",
+        "nature": "Calm",
+        "moves": [
+          "Scald",
+          "Ice Beam",
+          "Icy Wind",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 32,
+    "player": "Eduardo Trejo",
+    "team": [
+      {
+        "name": "Metagross",
+        "item": "Metagrossite",
+        "ability": "Clear Body",
+        "nature": "Jolly",
+        "moves": [
+          "Iron Head",
+          "Psychic Fangs",
+          "Body Press",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant",
+        "moves": [
+          "Dragon Claw",
+          "Stomping Tantrum",
+          "Rock Slide",
+          "Earthquake"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Sitrus Berry",
+        "ability": "Drizzle",
+        "nature": "Calm",
+        "moves": [
+          "Weather Ball",
+          "Tailwind",
+          "Wide Guard",
+          "Hurricane"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest",
+        "moves": [
+          "Electro Shot",
+          "Dragon Pulse",
+          "Snarl",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Solar Power",
+        "nature": "Timid",
+        "moves": [
+          "Heat Wave",
+          "Weather Ball",
+          "Hurricane",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Grimmsnarl",
+        "item": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Careful",
+        "moves": [
+          "Spirit Break",
+          "Reflect",
+          "Parting Shot",
+          "Light Screen"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 33,
+    "player": "Marco Valencia Gaytán",
+    "team": [
+      {
+        "name": "Delphox",
+        "item": "Delphoxite",
+        "ability": "Blaze",
+        "nature": "Timid",
+        "moves": [
+          "Protect",
+          "Heat Wave",
+          "Psyshock",
+          "Nasty Plot"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful",
+        "moves": [
+          "Fake Out",
+          "Flare Blitz",
+          "Snarl",
+          "Parting Shot"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Focus Sash",
+        "ability": "Poison Touch",
+        "nature": "Jolly",
+        "moves": [
+          "Fake Out",
+          "Close Combat",
+          "Poison Jab",
+          "Quick Guard"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Life Orb",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Protect",
+          "Kowtow Cleave",
+          "Sucker Punch",
+          "Swords Dance"
+        ]
+      },
+      {
+        "name": "Eternal Flower Floette",
+        "item": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest",
+        "moves": [
+          "Protect",
+          "Moonblast",
+          "Dazzling Gleam",
+          "Calm Mind"
+        ]
+      },
+      {
+        "name": "Sinistcha",
+        "item": "Rocky Helmet",
+        "ability": "Hospitality",
+        "nature": "Bold",
+        "moves": [
+          "Protect",
+          "Matcha Gotcha",
+          "Rage Powder",
+          "Trick Room"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 34,
+    "player": "Mario Semerena",
+    "team": [
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Solar Power",
+        "nature": "Modest",
+        "moves": [
+          "Heat Wave",
+          "Weather Ball",
+          "Solar Beam",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Adamant",
+        "moves": [
+          "Rock Slide",
+          "Stomping Tantrum",
+          "Dragon Claw",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Whimsicott",
+        "item": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid",
+        "moves": [
+          "Moonblast",
+          "Tailwind",
+          "Encore",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Metagross",
+        "item": "Metagrossite",
+        "ability": "Clear Body",
+        "nature": "Adamant",
+        "moves": [
+          "Psychic Fangs",
+          "Steel Roller",
+          "Brick Break",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful",
+        "moves": [
+          "Fake Out",
+          "Flare Blitz",
+          "Throat Chop",
+          "Parting Shot"
+        ]
+      },
+      {
+        "name": "Female Indeedee",
+        "item": "Rocky Helmet",
+        "ability": "Psychic Surge",
+        "nature": "Bold",
+        "moves": [
+          "Psychic",
+          "Follow Me",
+          "Helping Hand",
+          "Trick Room"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 35,
+    "player": "Daniel Nuñez",
+    "team": [
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Calm",
+        "moves": [
+          "Dragon Pulse",
+          "Electro Shot",
+          "Snarl",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Female Basculegion",
+        "item": "Focus Sash",
+        "ability": "Swift Swim",
+        "nature": "Modest",
+        "moves": [
+          "Muddy Water",
+          "Shadow Ball",
+          "Ice Beam",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Electric Seed",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Close Combat",
+          "Poison Jab",
+          "Swords Dance",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Damp Rock",
+        "ability": "Drizzle",
+        "nature": "Bold",
+        "moves": [
+          "Weather Ball",
+          "Hurricane",
+          "Wide Guard",
+          "Helping Hand"
+        ]
+      },
+      {
+        "name": "Golisopod",
+        "item": "Golisopite",
+        "ability": "Emergency Exit",
+        "nature": "Adamant",
+        "moves": [
+          "Sucker Punch",
+          "Leech Life",
+          "Iron Head",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite X",
+        "ability": "Lightning Rod",
+        "nature": "Jolly",
+        "moves": [
+          "Fake Out",
+          "Volt Tackle",
+          "Volt Switch",
+          "Feint"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 36,
+    "player": "Jesus Garza",
+    "team": [
+      {
+        "name": "Gholdengo",
+        "item": "Life Orb",
+        "ability": "Good as Gold",
+        "nature": "Modest",
+        "moves": [
+          "Make It Rain",
+          "Shadow Ball",
+          "Nasty Plot",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Dragonite",
+        "item": "Dragoninite",
+        "ability": "Inner Focus",
+        "nature": "Modest",
+        "moves": [
+          "Dragon Pulse",
+          "Flamethrower",
+          "Tailwind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Eternal Flower Floette",
+        "item": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest",
+        "moves": [
+          "Moonblast",
+          "Dazzling Gleam",
+          "Calm Mind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "White Herb",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Dire Claw",
+          "Close Combat",
+          "Rock Tomb",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "item": "Miracle Seed",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Wood Hammer",
+          "Grassy Glide",
+          "High Horsepower",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish",
+        "moves": [
+          "Flare Blitz",
+          "Helping Hand",
+          "Parting Shot",
+          "Fake Out"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 37,
+    "player": "Luis Miguel Hernández Pérez",
+    "team": [
+      {
+        "name": "Raichu",
+        "item": "Raichunite X",
+        "ability": "Lightning Rod",
+        "nature": "Jolly",
+        "moves": [
+          "Volt Switch",
+          "Feint",
+          "Fake Out",
+          "Volt Tackle"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Choice Scarf",
+        "ability": "Drizzle",
+        "nature": "Timid",
+        "moves": [
+          "Muddy Water",
+          "Hurricane",
+          "Ice Beam",
+          "Rain Dance"
+        ]
+      },
+      {
+        "name": "Female Basculegion",
+        "item": "Focus Sash",
+        "ability": "Swift Swim",
+        "nature": "Modest",
+        "moves": [
+          "Muddy Water",
+          "Shadow Ball",
+          "Ice Beam",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Golisopod",
+        "item": "Golisopite",
+        "ability": "Emergency Exit",
+        "nature": "Adamant",
+        "moves": [
+          "Swords Dance",
+          "Leech Life",
+          "Sucker Punch",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest",
+        "moves": [
+          "Electro Shot",
+          "Aura Sphere",
+          "Dragon Pulse",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Electric Seed",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Protect",
+          "Close Combat",
+          "Dire Claw",
+          "Swords Dance"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 38,
+    "player": "Javier Nain",
+    "team": [
+      {
+        "name": "Venusaur",
+        "item": "Life Orb",
+        "ability": "Chlorophyll",
+        "nature": "Modest",
+        "moves": [
+          "Sludge Bomb",
+          "Leaf Storm",
+          "Protect",
+          "Earth Power"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Timid",
+        "moves": [
+          "Heat Wave",
+          "Weather Ball",
+          "Protect",
+          "Ancient Power"
+        ]
+      },
+      {
+        "name": "Toxapex",
+        "item": "Leftovers",
+        "ability": "Regenerator",
+        "nature": "Relaxed",
+        "moves": [
+          "Toxic",
+          "Infestation",
+          "Baneful Bunker",
+          "Wide Guard"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant",
+        "moves": [
+          "Dragon Claw",
+          "Stomping Tantrum",
+          "Rock Slide",
+          "Earthquake"
+        ]
+      },
+      {
+        "name": "Sylveon",
+        "item": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest",
+        "moves": [
+          "Hyper Voice",
+          "Quick Attack",
+          "Detect",
+          "Yawn"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish",
+        "moves": [
+          "Flare Blitz",
+          "Throat Chop",
+          "Fake Out",
+          "Parting Shot"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 39,
+    "player": "Julian Alberto Castellanos Vargas",
+    "team": [
+      {
+        "name": "Milotic",
+        "item": "Leftovers",
+        "ability": "Competitive",
+        "nature": "Calm",
+        "moves": [
+          "Muddy Water",
+          "Coil",
+          "Hypnosis",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Zap Cannon",
+          "Focus Blast",
+          "Encore",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "item": "Life Orb",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Wood Hammer",
+          "Grassy Glide",
+          "High Horsepower",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Sitrus Berry",
+        "ability": "Drizzle",
+        "nature": "Modest",
+        "moves": [
+          "Weather Ball",
+          "Ice Beam",
+          "Tailwind",
+          "Wide Guard"
+        ]
+      },
+      {
+        "name": "Golisopod",
+        "item": "Golisopite",
+        "ability": "Emergency Exit",
+        "nature": "Adamant",
+        "moves": [
+          "Sucker Punch",
+          "Leech Life",
+          "Protect",
+          "Swords Dance"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Grassy Seed",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Close Combat",
+          "Rock Slide",
+          "Throat Chop",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 40,
+    "player": "Gilberto Espejel",
+    "team": [
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Zap Cannon",
+          "Focus Blast",
+          "Fake Out",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Volcarona",
+        "item": "Grassy Seed",
+        "ability": "Flame Body",
+        "nature": "Modest",
+        "moves": [
+          "Heat Wave",
+          "Giga Drain",
+          "Quiver Dance",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Eternal Flower Floette",
+        "item": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest",
+        "moves": [
+          "Moonblast",
+          "Dazzling Gleam",
+          "Calm Mind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Basculegion",
+        "item": "Choice Scarf",
+        "ability": "Adaptability",
+        "nature": "Jolly",
+        "moves": [
+          "Wave Crash",
+          "Last Respects",
+          "Flip Turn",
+          "Soak"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful",
+        "moves": [
+          "Flare Blitz",
+          "Throat Chop",
+          "Parting Shot",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "item": "Miracle Seed",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Wood Hammer",
+          "Grassy Glide",
+          "High Horsepower",
+          "Fake Out"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 41,
+    "player": "Christian Ramirez",
+    "team": [
+      {
+        "name": "Basculegion",
+        "item": "Choice Scarf",
+        "ability": "Adaptability",
+        "nature": "Jolly",
+        "moves": [
+          "Last Respects",
+          "Wave Crash",
+          "Flip Turn",
+          "Aqua Jet"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Focus Sash",
+        "ability": "Drizzle",
+        "nature": "Calm",
+        "moves": [
+          "Hurricane",
+          "Muddy Water",
+          "Tailwind",
+          "Wide Guard"
+        ]
+      },
+      {
+        "name": "Gardevoir",
+        "item": "Gardevoirite",
+        "ability": "Synchronize",
+        "nature": "Timid",
+        "moves": [
+          "Expanding Force",
+          "Psychic",
+          "Hyper Voice",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Golisopod",
+        "item": "Golisopite",
+        "ability": "Emergency Exit",
+        "nature": "Brave",
+        "moves": [
+          "Protect",
+          "Sucker Punch",
+          "Iron Head",
+          "Leech Life"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Bold",
+        "moves": [
+          "Protect",
+          "Electro Shot",
+          "Aura Sphere",
+          "Dragon Pulse"
+        ]
+      },
+      {
+        "name": "Female Indeedee",
+        "item": "Lum Berry",
+        "ability": "Psychic Surge",
+        "nature": "Relaxed",
+        "moves": [
+          "Follow Me",
+          "Psychic",
+          "Trick Room",
+          "Helping Hand"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 42,
+    "player": "Alejandro Aaron Mendoza Luna",
+    "team": [
+      {
+        "name": "Froslass",
+        "item": "Froslassite",
+        "ability": "Cursed Body",
+        "nature": "Timid",
+        "moves": [
+          "Blizzard",
+          "Shadow Ball",
+          "Aurora Veil",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Glimmora",
+        "item": "Focus Sash",
+        "ability": "Toxic Debris",
+        "nature": "Timid",
+        "moves": [
+          "Sludge Bomb",
+          "Power Gem",
+          "Earth Power",
+          "Spiky Shield"
+        ]
+      },
+      {
+        "name": "Primarina",
+        "item": "Leftovers",
+        "ability": "Liquid Voice",
+        "nature": "Modest",
+        "moves": [
+          "Hyper Voice",
+          "Moonblast",
+          "Calm Mind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Zap Cannon",
+          "Focus Blast",
+          "Fake Out",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Talonflame",
+        "item": "Sharp Beak",
+        "ability": "Gale Wings",
+        "nature": "Jolly",
+        "moves": [
+          "Dual Wingbeat",
+          "Flare Blitz",
+          "Tailwind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "item": "Miracle Seed",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Grassy Glide",
+          "Wood Hammer",
+          "U-turn",
+          "Fake Out"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 43,
+    "player": "Salvador Alexander Del Valle Delgado",
+    "team": [
+      {
+        "name": "Eternal Flower Floette",
+        "item": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Timid",
+        "moves": [
+          "Moonblast",
+          "Dazzling Gleam",
+          "Calm Mind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Gholdengo",
+        "item": "Life Orb",
+        "ability": "Good as Gold",
+        "nature": "Timid",
+        "moves": [
+          "Make It Rain",
+          "Shadow Ball",
+          "Nasty Plot",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "Grassy Seed",
+        "ability": "Unburden",
+        "nature": "Adamant",
+        "moves": [
+          "Dire Claw",
+          "Close Combat",
+          "Protect",
+          "Rock Slide"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "item": "Sitrus Berry",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Grassy Glide",
+          "U-turn",
+          "Fake Out",
+          "Wood Hammer"
+        ]
+      },
+      {
+        "name": "Kingambit",
+        "item": "Black Glasses",
+        "ability": "Defiant",
+        "nature": "Adamant",
+        "moves": [
+          "Kowtow Cleave",
+          "Protect",
+          "Sucker Punch",
+          "Swords Dance"
+        ]
+      },
+      {
+        "name": "Salamence",
+        "item": "Salamencite",
+        "ability": "Intimidate",
+        "nature": "Timid",
+        "moves": [
+          "Protect",
+          "Tailwind",
+          "Hyper Voice",
+          "Flamethrower"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 44,
+    "player": "Carlos Rene Hernández Galindo",
+    "team": [
+      {
+        "name": "Rillaboom",
+        "item": "Miracle Seed",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Fake Out",
+          "Wood Hammer",
+          "Grassy Glide",
+          "U-turn"
+        ]
+      },
+      {
+        "name": "Garchomp",
+        "item": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Jolly",
+        "moves": [
+          "Stomping Tantrum",
+          "Dragon Claw",
+          "Earthquake",
+          "Rock Slide"
+        ]
+      },
+      {
+        "name": "Incineroar",
+        "item": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish",
+        "moves": [
+          "Fake Out",
+          "Parting Shot",
+          "Flare Blitz",
+          "Darkest Lariat"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Solar Power",
+        "nature": "Timid",
+        "moves": [
+          "Protect",
+          "Heat Wave",
+          "Weather Ball",
+          "Solar Beam"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Zap Cannon",
+          "Focus Blast",
+          "Protect",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "White Herb",
+        "ability": "Unburden",
+        "nature": "Jolly",
+        "moves": [
+          "Protect",
+          "Close Combat",
+          "Rock Slide",
+          "Dire Claw"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 45,
+    "player": "Aaron Octavio Morales Valencia",
+    "team": [
+      {
+        "name": "Gholdengo",
+        "item": "Life Orb",
+        "ability": "Good as Gold",
+        "nature": "Modest",
+        "moves": [
+          "Make It Rain",
+          "Shadow Ball",
+          "Nasty Plot",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Zap Cannon",
+          "Focus Blast",
+          "Fake Out",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Hisuian Arcanine",
+        "item": "Focus Sash",
+        "ability": "Rock Head",
+        "nature": "Jolly",
+        "moves": [
+          "Head Smash",
+          "Flare Blitz",
+          "Extreme Speed",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Staraptor",
+        "item": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly",
+        "moves": [
+          "Brave Bird",
+          "Close Combat",
+          "Tailwind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Primarina",
+        "item": "Leftovers",
+        "ability": "Liquid Voice",
+        "nature": "Modest",
+        "moves": [
+          "Hyper Voice",
+          "Moonblast",
+          "Calm Mind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "item": "Miracle Seed",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Wood Hammer",
+          "Grassy Glide",
+          "High Horsepower",
+          "Fake Out"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 46,
+    "player": "Rodrigo Rill",
+    "team": [
+      {
+        "name": "Garchomp",
+        "item": "Garchompite Z",
+        "ability": "Rough Skin",
+        "nature": "Timid",
+        "moves": [
+          "Dragon Pulse",
+          "Earth Power",
+          "Power Gem",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest",
+        "moves": [
+          "Electro Shot",
+          "Dragon Pulse",
+          "Snarl",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Venusaur",
+        "item": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Modest",
+        "moves": [
+          "Leaf Storm",
+          "Sludge Bomb",
+          "Sleep Powder",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Sitrus Berry",
+        "ability": "Drizzle",
+        "nature": "Bold",
+        "moves": [
+          "Weather Ball",
+          "Hurricane",
+          "Tailwind",
+          "Wide Guard"
+        ]
+      },
+      {
+        "name": "Charizard",
+        "item": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Timid",
+        "moves": [
+          "Heat Wave",
+          "Weather Ball",
+          "Hurricane",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Grimmsnarl",
+        "item": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Careful",
+        "moves": [
+          "Spirit Break",
+          "Parting Shot",
+          "Reflect",
+          "Light Screen"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 47,
+    "player": "Román Rivera",
+    "team": [
+      {
+        "name": "Hisuian Arcanine",
+        "item": "Focus Sash",
+        "ability": "Rock Head",
+        "nature": "Jolly",
+        "moves": [
+          "Flare Blitz",
+          "Head Smash",
+          "Extreme Speed",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Rillaboom",
+        "item": "Grassy Seed",
+        "ability": "Grassy Surge",
+        "nature": "Adamant",
+        "moves": [
+          "Wood Hammer",
+          "High Horsepower",
+          "Grassy Glide",
+          "Fake Out"
+        ]
+      },
+      {
+        "name": "Primarina",
+        "item": "Leftovers",
+        "ability": "Liquid Voice",
+        "nature": "Modest",
+        "moves": [
+          "Hyper Voice",
+          "Moonblast",
+          "Calm Mind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Staraptor",
+        "item": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly",
+        "moves": [
+          "Close Combat",
+          "Brave Bird",
+          "Tailwind",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Gholdengo",
+        "item": "Life Orb",
+        "ability": "Good as Gold",
+        "nature": "Timid",
+        "moves": [
+          "Shadow Ball",
+          "Nasty Plot",
+          "Make It Rain",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Pikachu",
+        "item": "Light Ball",
+        "ability": "Lightning Rod",
+        "nature": "Jolly",
+        "moves": [
+          "Volt Tackle",
+          "Encore",
+          "Fake Out",
+          "Protect"
+        ]
+      }
+    ]
+  },
+  {
+    "rank": 48,
+    "player": "Edgar Rendon Galindo",
+    "team": [
+      {
+        "name": "Raichu",
+        "item": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid",
+        "moves": [
+          "Zap Cannon",
+          "Focus Blast",
+          "Fake Out",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Sneasler",
+        "item": "White Herb",
+        "ability": "Unburden",
+        "nature": "Jolly",
+        "moves": [
+          "Dire Claw",
+          "Close Combat",
+          "Rock Slide",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Archaludon",
+        "item": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Bold",
+        "moves": [
+          "Electro Shot",
+          "Dragon Pulse",
+          "Flash Cannon",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Golisopod",
+        "item": "Golisopite",
+        "ability": "Emergency Exit",
+        "nature": "Adamant",
+        "moves": [
+          "Iron Head",
+          "Leech Life",
+          "Sucker Punch",
+          "Protect"
+        ]
+      },
+      {
+        "name": "Pelipper",
+        "item": "Damp Rock",
+        "ability": "Drizzle",
+        "nature": "Bold",
+        "moves": [
+          "Hurricane",
+          "Weather Ball",
+          "Wide Guard",
+          "Helping Hand"
+        ]
+      },
+      {
+        "name": "Female Basculegion",
+        "item": "Focus Sash",
+        "ability": "Swift Swim",
+        "nature": "Modest",
+        "moves": [
+          "Muddy Water",
+          "Shadow Ball",
+          "Ice Beam",
+          "Protect"
+        ]
+      }
+    ]
+  }
+]
