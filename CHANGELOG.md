@@ -3,11 +3,11 @@
 
 # Dates use the YYYY-MM-DD format.
 
-- 2026-11-04 (0.0.3.2)
+- 2026-11-04 (0.0.3.2, current release)
     - Added functions to support json tournament loads into the package
     - Added functions to check and measure team similarity and find identical teams
 
-- 2026-11-03 (0.0.3.1, current release)
+- 2026-11-03 (0.0.3.1)
     - Add spread-target metadata to moves and infer the spread modifier during
       damage calculations that receive a move.
 
