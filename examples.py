@@ -20,8 +20,8 @@ if __name__ == "__main__":
     # You can initialize it without any of these values, just specify the pokémons name
     # You can add a held item but it currently has no effect on any damage calcs.
 
-    # Abilities will be added later and you can currently not specify them, but you could
-    # add the desired effect manually through modifiers.
+    # Abilities can be specified but are not yet applied in damage calculations.
+    # Their effects can be represented manually through modifiers.
 
     # You will find some exceptions if you define an "illegal" Pokémon, but they're self-explanatory for the most part.
 

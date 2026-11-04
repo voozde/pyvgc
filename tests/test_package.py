@@ -45,32 +45,32 @@ Adamant Nature
 - Helping Hand"""
 
         showdown_set_2 = """Nick (Archaludon) @ Leftovers
-        Ability: Stamina
-        Level: 50
-        EVs: 2 HP / 32 SpA / 32 Spe
-        Timid Nature
-        - Dragon Pulse
-        - Electro Shot
-        - Protect
-        - Snarl"""
+Ability: Stamina
+Level: 50
+EVs: 2 HP / 32 SpA / 32 Spe
+Timid Nature
+- Dragon Pulse
+- Electro Shot
+- Protect
+- Snarl"""
 
         pokemon2 = import_showdown_pokemon(showdown_set_2, regulation="M-C")
-        print("imported", pokemon2.info())
-        datarch = export_showdown_pokemon(pokemon2)
-        print(datarch)
-
-        my_archaludon = Pokemon.load("Archaludon", regulation="M-C",item="Leftovers",
-                                  stat_training=
-                                  {"hp": 2, "attack": 0, "defense": 0,
-                                   "special_attack": 32, "special_defense": 0, "speed": 32},
-                                   nature="Modest",
-                                   moveset=("Dragon Pulse", "Electro Shot", "Protect", "Flash Cannon"),
-                                   nickname="Nick",
-                                   ability="Stalwart")
-        print("--------------start-------------------")
-        print(my_archaludon.info())
-        print(export_showdown_pokemon(my_archaludon))
-        print("--------------end-------------------")
+        self.assertEqual(pokemon2.name, "Archaludon")
+        self.assertEqual(pokemon2.nickname, "Nick")
+        self.assertEqual(pokemon2.ability, "Stamina")
+        self.assertEqual(pokemon2.nature, "Timid")
+        self.assertEqual(
+            export_showdown_pokemon(pokemon2),
+            """Nick (Archaludon) @ Leftovers
+Ability: Stamina
+Level: 50
+EVs: 2 HP / 32 SpA / 32 Spe
+Timid Nature
+- Dragon Pulse
+- Electro Shot
+- Protect
+- Snarl""",
+        )
 
         pokemon = import_showdown_pokemon(showdown_set, regulation="M-C")
 
