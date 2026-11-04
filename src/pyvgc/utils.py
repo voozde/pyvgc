@@ -1,7 +1,8 @@
 """Supportive data-query utilities for pyvgc."""
 
 import re
-from typing import Optional
+from collections.abc import Iterable, Mapping
+from typing import Hashable, Optional, TypeVar, Union, cast
 
 from .moves import Move
 from .pokemon import Pokemon
@@ -23,6 +24,224 @@ _SHOWDOWN_STAT_LABELS = {
     "speed": "Spe",
 }
 _SHOWDOWN_EV_PATTERN = re.compile(r"^(\d+)\s+(HP|Atk|Def|SpA|SpD|Spe)$", re.I)
+_TEAM_SIZE = 6
+_TEAM_MEMBER_SCORE = 17
+_MAX_TEAM_SCORE = _TEAM_SIZE * _TEAM_MEMBER_SCORE
+
+
+TeamMember = Union[Pokemon, Mapping[str, object]]
+Team = Iterable[TeamMember]
+Identifier = TypeVar("Identifier", bound=Hashable)
+
+
+def _team_member_values(member: TeamMember) -> tuple[
+    str, Optional[str], Optional[str], Optional[str], tuple[str, ...]
+]:
+    if isinstance(member, Pokemon):
+        name = member.name
+        ability = member.ability
+        item = member.get_item()
+        nature = member.nature
+        moves = member.moveset
+    elif isinstance(member, Mapping):
+        required_fields = {"name", "ability", "item", "nature", "moves"}
+        missing_fields = required_fields - member.keys()
+        if missing_fields:
+            raise ValueError(
+                "team member is missing required field(s): "
+                + ", ".join(sorted(missing_fields))
+            )
+        name = member["name"]
+        ability = member["ability"]
+        item = member["item"]
+        nature = member["nature"]
+        moves = member["moves"]
+    else:
+        raise TypeError("team members must be Pokemon instances or mappings")
+
+    if not isinstance(name, str) or not name.strip():
+        raise ValueError("team member name must be a non-empty string")
+    for field_name, value in (
+        ("ability", ability),
+        ("item", item),
+        ("nature", nature),
+    ):
+        if value is not None and not isinstance(value, str):
+            raise TypeError(f"team member {field_name} must be a string or None")
+    if isinstance(moves, (str, bytes)) or not isinstance(moves, Iterable):
+        raise TypeError("team member moves must be an iterable of moves")
+
+    move_names = []
+    for move in moves:
+        if isinstance(move, Move):
+            move_name = move.name
+        elif isinstance(move, str):
+            move_name = move
+        else:
+            raise TypeError("team member moves must be strings or Move instances")
+        move_names.append(move_name)
+    return name, ability, item, nature, tuple(move_names)
+
+
+def _normalize_team(team: Team) -> tuple[
+    tuple[str, Optional[str], Optional[str], Optional[str], tuple[str, ...]], ...
+]:
+    if isinstance(team, (str, bytes)) or not isinstance(team, Iterable):
+        raise TypeError("team must be an iterable of Pokémon or team-member mappings")
+    normalized = tuple(_team_member_values(member) for member in team)
+    if len(normalized) != _TEAM_SIZE:
+        raise ValueError(f"team must contain exactly {_TEAM_SIZE} Pokémon")
+    names = [member[0].casefold() for member in normalized]
+    if len(set(names)) != len(names):
+        raise ValueError("team cannot contain duplicate Pokémon")
+    return normalized
+
+
+def compare_team_distance(team1: Team, team2: Team) -> int:
+    """Return a team similarity score; higher scores indicate more similarity.
+
+    Each team must contain six Pokémon. The maximum score is 102; a missing
+    Pokémon costs 17 points, and each differing ability, item, nature, or move
+    costs one point. Teams may be sequences of :class:`Pokemon` objects or
+    mappings with ``name``, ``ability``, ``item``, ``nature``, and ``moves``.
+    """
+    first = _normalize_team(team1)
+    second = _normalize_team(team2)
+    second_by_name = {member[0].casefold(): member for member in second}
+    score = _MAX_TEAM_SCORE
+
+    for name, ability, item, nature, moves in first:
+        other = second_by_name.get(name.casefold())
+        if other is None:
+            score -= _TEAM_MEMBER_SCORE
+            continue
+        _, other_ability, other_item, other_nature, other_moves = other
+        score -= sum(
+            value != other_value
+            for value, other_value in (
+                (ability, other_ability),
+                (item, other_item),
+                (nature, other_nature),
+            )
+        )
+        score -= max(
+            sum(move not in other_moves for move in moves),
+            sum(move not in moves for move in other_moves),
+        )
+    return score
+
+
+def _teams_from_records(
+    teams: Mapping[Hashable, object],
+) -> dict[Hashable, Team]:
+    if not isinstance(teams, Mapping):
+        raise TypeError("teams must be a mapping of team identifiers to teams")
+    normalized: dict[Hashable, Team] = {}
+    for identifier, record in teams.items():
+        if isinstance(record, Mapping) and "team" in record:
+            team = record["team"]
+        else:
+            team = record
+        if isinstance(team, (str, bytes)) or not isinstance(team, Iterable):
+            raise TypeError(
+                f"team record {identifier!r} must contain an iterable team"
+            )
+        normalized[identifier] = cast(Team, team)
+    return normalized
+
+
+def pairwise_score_matrix(
+    teams: Mapping[Hashable, object],
+) -> dict[Hashable, dict[Hashable, int]]:
+    """Return pairwise similarity scores for teams keyed by identifiers.
+
+    Values may be six-Pokémon teams directly or records containing a ``team``
+    field. The returned matrix is symmetric and includes self-comparisons.
+    """
+    team_map = _teams_from_records(teams)
+    identifiers = list(team_map)
+    return {
+        identifier: {
+            other_identifier: compare_team_distance(
+                team_map[identifier],
+                team_map[other_identifier],
+            )
+            for other_identifier in identifiers
+        }
+        for identifier in identifiers
+    }
+
+
+def find_team_pairs_by_score(
+    score_matrix: Mapping[Identifier, Mapping[Identifier, int]],
+    target_score: int,
+) -> list[tuple[Identifier, Identifier, int]]:
+    """Return distinct identifier pairs whose matrix score exactly matches."""
+    if type(target_score) is not int:
+        raise TypeError("target_score must be an integer")
+    identifiers = list(score_matrix)
+    pairs = []
+    for identifier in identifiers:
+        if not isinstance(score_matrix[identifier], Mapping):
+            raise TypeError("score_matrix rows must be mappings")
+    for index, identifier in enumerate(identifiers):
+        row = score_matrix[identifier]
+        for other_identifier in identifiers[index + 1:]:
+            if other_identifier not in row:
+                raise ValueError(
+                    f"score_matrix row {identifier!r} is missing "
+                    f"{other_identifier!r}"
+                )
+            score = row[other_identifier]
+            if type(score) is not int:
+                raise TypeError("score_matrix scores must be integers")
+            if score == target_score:
+                pairs.append((identifier, other_identifier, score))
+    return pairs
+
+
+def group_identical_teamplayers(
+    score_matrix: Mapping[Identifier, Mapping[Identifier, int]],
+) -> list[list[Identifier]]:
+    """Group identifiers whose teams have the maximum similarity score of 102.
+
+    Groups are connected components, so a chain of matching pairs joins its
+    members. A score of 102 represents identical teams.
+    """
+    pairs = find_team_pairs_by_score(score_matrix, _MAX_TEAM_SCORE)
+    neighbors: dict[Hashable, set[Hashable]] = {}
+    for identifier, other_identifier, _ in pairs:
+        neighbors.setdefault(identifier, set()).add(other_identifier)
+        neighbors.setdefault(other_identifier, set()).add(identifier)
+
+    groups = []
+    visited = set()
+    for identifier in neighbors:
+        if identifier in visited:
+            continue
+        group = set()
+        pending = [identifier]
+        while pending:
+            current = pending.pop()
+            if current in visited:
+                continue
+            visited.add(current)
+            group.add(current)
+            pending.extend(neighbors[current] - visited)
+        groups.append(
+            [candidate for candidate in score_matrix if candidate in group]
+        )
+        if any(
+            score_matrix[left].get(right) != _MAX_TEAM_SCORE
+            or score_matrix[right].get(left) != _MAX_TEAM_SCORE
+            for index, left in enumerate(groups[-1])
+            for right in groups[-1][index + 1:]
+        ):
+            raise ValueError(
+                "score_matrix must mark all pairs in an identical-team "
+                "group with the maximum score"
+            )
+    return groups
 
 
 def import_showdown_pokemon(

@@ -58,7 +58,20 @@ training using Rock Slide produces `66, 66, 66, 68, 68, 70, 70, 70, 72, 72, 74, 
 
 I have no idea what causes this
 
-# AI / Additional Sources Disclaimer
+## Team similarity analysis
+
+Compare six-Pokémon teams represented as `Pokemon` objects or as mappings
+containing `name`, `ability`, `item`, `nature`, and `moves`. The score is a
+similarity score (higher means more similar), with 102 for identical teams.
+
+`pairwise_score_matrix` builds a matrix from teams keyed by an identifier;
+`find_team_pairs_by_score` finds exact-score pairs, and
+`group_identical_teamplayers` groups players whose teams score 102, the maximum
+score for identical teams.
+
+You can check an example of this in the "showcases" folder.
+
+## AI / Additional Sources Disclaimer
 
 Current development is assisted by the VSCode Copilot Plugin, which settled on GPT-5.6-Luna.
 

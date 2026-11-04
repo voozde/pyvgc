@@ -12,14 +12,18 @@ from pyvgc import (
     Pokemon,
     __version__,
     calculate_damage,
+    compare_team_distance,
     export_showdown_pokemon,
+    find_team_pairs_by_score,
     get_battle_logic,
     get_item,
     get_move,
     get_movepool_for_pokemon,
     get_pokemon_for_move,
+    group_identical_teamplayers,
     import_showdown_pokemon,
     load_regulation,
+    pairwise_score_matrix,
     pokemon_with_ability,
     regulation_description,
     signature_moves,
@@ -118,6 +122,95 @@ Adamant Nature
 - Dire Claw
 - Protect""",
         )
+
+    def test_team_comparison_helpers_support_records_and_pokemon(self):
+        """Public team utilities score sets, matrices, pairs, and groups."""
+        team = [
+            {
+                "name": f"Species {index}",
+                "ability": "Ability",
+                "item": "Item",
+                "nature": "Adamant",
+                "moves": ["Move A", "Move B", "Move C", "Move D"],
+            }
+            for index in range(6)
+        ]
+        changed_move = [dict(pokemon) for pokemon in team]
+        changed_move[0]["moves"] = ["Move A", "Move B", "Move C", "Move E"]
+        added_move = [dict(pokemon) for pokemon in team]
+        added_move[0]["moves"] = [
+            "Move A",
+            "Move B",
+            "Move C",
+            "Move D",
+            "Move E",
+        ]
+        missing_species = [dict(pokemon) for pokemon in team]
+        missing_species[0]["name"] = "Different Species"
+
+        self.assertEqual(compare_team_distance(team, team), 102)
+        self.assertEqual(compare_team_distance(team, changed_move), 101)
+        self.assertEqual(compare_team_distance(team, added_move), 101)
+        self.assertEqual(compare_team_distance(team, missing_species), 85)
+
+        records = {
+            1: {"player": "One", "team": team},
+            2: {"player": "Two", "team": changed_move},
+            3: {"player": "Three", "team": missing_species},
+            4: {"player": "Four", "team": [dict(pokemon) for pokemon in team]},
+        }
+        scores = pairwise_score_matrix(records)
+        self.assertEqual(scores[1][1], 102)
+        self.assertEqual(scores[1][2], 101)
+        self.assertEqual(scores[1][3], 85)
+        self.assertEqual(scores[2][1], scores[1][2])
+        self.assertEqual(
+            find_team_pairs_by_score(scores, 101),
+            [(1, 2, 101), (2, 4, 101)],
+        )
+        self.assertEqual(group_identical_teamplayers(scores), [[1, 4]])
+
+        similar_scores = {
+            1: {1: 102, 2: 101, 3: 101},
+            2: {1: 101, 2: 102, 3: 101},
+            3: {1: 101, 2: 101, 3: 102},
+        }
+        self.assertEqual(
+            group_identical_teamplayers(similar_scores),
+            [],
+        )
+        inconsistent_scores = {
+            1: {1: 102, 2: 102, 3: 101},
+            2: {1: 102, 2: 102, 3: 102},
+            3: {1: 101, 2: 102, 3: 102},
+        }
+        with self.assertRaisesRegex(ValueError, "all pairs"):
+            group_identical_teamplayers(inconsistent_scores)
+        self.assertEqual(find_team_pairs_by_score(scores, 102), [(1, 4, 102)])
+
+        regulation = load_regulation("M-C")
+        pokemon_team = [
+            regulation.load_pokemon(name)
+            for name in (
+                "Incineroar",
+                "Venusaur",
+                "Gengar",
+                "Excadrill",
+                "Milotic",
+                "Gholdengo",
+            )
+        ]
+        self.assertEqual(
+            compare_team_distance(pokemon_team, pokemon_team),
+            102,
+        )
+
+    def test_team_comparison_rejects_invalid_team_shapes(self):
+        """Team comparison reports malformed teams instead of scoring them."""
+        with self.assertRaisesRegex(ValueError, "exactly 6"):
+            compare_team_distance([], [])
+        with self.assertRaisesRegex(ValueError, "missing required field"):
+            compare_team_distance([{}] * 6, [{}] * 6)
 
     def test_showdown_item_is_optional(self):
         """A Showdown set without an item imports and exports without one."""
