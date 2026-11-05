@@ -254,7 +254,7 @@ Adamant Nature
 
     def test_package_exposes_current_version(self):
         """The package exposes the declared distribution version."""
-        self.assertEqual(__version__, "0.0.3.2")
+        self.assertEqual(__version__, "0.0.3.3")
 
     def test_regulation_representation_is_concise(self):
         """Loaded regulations do not print their complete data mappings."""

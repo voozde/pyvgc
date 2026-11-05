@@ -21,3 +21,5 @@ venv/
 
 # Local example script
 /forfun.py
+/prepare_pypi.sh
+/optimal_distribution.ipynb

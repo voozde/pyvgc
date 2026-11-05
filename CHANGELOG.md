@@ -3,6 +3,10 @@
 
 # Dates use the YYYY-MM-DD format.
 
+- 2026-11-05 (0.0.3.3, current release)
+    - Made spread damage modifiers battle-logic-specific; singles ignores
+      spread-move metadata and explicit spread settings.
+
 - 2026-11-04 (0.0.3.2, current release)
     - Added functions to support json tournament loads into the package
     - Added functions to check and measure team similarity and find identical teams

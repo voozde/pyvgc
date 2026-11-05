@@ -516,6 +516,61 @@ class BattleInteractionTests(unittest.TestCase):
             34, 34, 34, 36, 36, 36, 36, 37,
         ])
 
+    def test_singles_logic_ignores_spread_move_metadata_and_override(self):
+        """Spread moves receive no spread modifier in singles battle logic."""
+        doubles = load_regulation(
+            "M-C",
+            battle_logic=get_battle_logic(
+                "Cartridge-Champions-Release-2026"
+            ),
+        )
+        singles = load_regulation("M-C", battle_logic=CHAMPIONS_SINGLES)
+        doubles_attacker = doubles.load_pokemon(
+            "Excadrill", moveset=("Rock Slide",)
+        )
+        doubles_defender = doubles.load_pokemon("Incineroar")
+        singles_attacker = singles.load_pokemon(
+            "Excadrill", moveset=("Rock Slide",)
+        )
+        singles_defender = singles.load_pokemon("Incineroar")
+        move = singles_attacker.moveset[0]
+
+        self.assertTrue(move.is_spread)
+        self.assertIsNone(CHAMPIONS_SINGLES.spread_multiplier)
+
+        singles_default = CHAMPIONS_SINGLES.calculate_damage(
+            singles_attacker,
+            singles_defender,
+            move=move,
+            percentage=False,
+        )
+        singles_forced_spread = CHAMPIONS_SINGLES.calculate_damage(
+            singles_attacker,
+            singles_defender,
+            move=move,
+            percentage=False,
+            spread=True,
+        )
+        singles_raw_spread = CHAMPIONS_SINGLES.calculate_damage(
+            singles_attacker,
+            singles_defender,
+            power=move.base_power,
+            move_type=move.type,
+            special=False,
+            percentage=False,
+            spread=True,
+        )
+        doubles_default = doubles.battle_logic.calculate_damage(
+            doubles_attacker,
+            doubles_defender,
+            move=doubles_attacker.moveset[0],
+            percentage=False,
+        )
+
+        self.assertEqual(singles_default, singles_forced_spread)
+        self.assertEqual(singles_default, singles_raw_spread)
+        self.assertNotEqual(singles_default["normal"], doubles_default["normal"])
+
     def test_stat_training_is_applied_when_loaded(self):
         """Training points are applied to loaded level-50 stats."""
         trained = Pokemon.load(

@@ -12,7 +12,6 @@ if TYPE_CHECKING:
     from .battle_logic import BattleLogic
     from .pokemon import Pokemon
 
-SPREAD_MULTIPLIER = Fraction(3, 4)
 HELPING_HAND_MULTIPLIER = Fraction(3, 2)
 
 
@@ -182,8 +181,8 @@ def damage_rolls(
     ) + 2
     if helping_hand:
         base = int((base - 2) * HELPING_HAND_MULTIPLIER) + 2
-    if spread:
-        base = int(base * SPREAD_MULTIPLIER)
+    if spread and logic.spread_multiplier is not None:
+        base = int(base * logic.spread_multiplier)
 
     def rolls(critical: bool) -> list[int]:
         """Calculate all 16 random outcomes for one hit category."""

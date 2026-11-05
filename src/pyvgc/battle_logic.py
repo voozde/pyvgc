@@ -56,6 +56,7 @@ class BattleLogic:
     critical_multiplier: Fraction = CRITICAL_MULTIPLIER
     screen_multiplier: Fraction = DOUBLES_SCREEN_MULTIPLIER
     type_chart: Optional[Mapping[str, Mapping[str, Fraction]]] = None
+    spread_multiplier: Optional[Fraction] = Fraction(3, 4)
 
     def with_type_chart(
         self, type_chart: Mapping[str, Mapping[str, Fraction]]
@@ -134,6 +135,7 @@ SIMULATOR_CHAMPIONS_RELEASE_2026 = replace(
 CHAMPIONS_SINGLES = replace(
     CARTRIDGE_CHAMPIONS_RELEASE_2026,
     name="Champions-Singles-2026",
+    spread_multiplier=None,
     screen_multiplier=SCREEN_MULTIPLIER,
 )
 
