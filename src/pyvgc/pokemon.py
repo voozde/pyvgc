@@ -34,7 +34,7 @@ class Pokemon:
     __slots__ = (
         "number", "name", "hp", "attack", "defense", "special_attack",
         "special_defense", "speed", "_types", "_item", "nature",
-        "_stat_training", "_nickname", "_ability",
+        "_base_stats", "_stat_training", "_nickname", "_ability",
         "_pre_stage_stats", "_stat_stages",
         "_logic", "_regulation", "_moveset",
     )
@@ -95,6 +95,17 @@ class Pokemon:
 
         self.number = number
         self.name = name
+        self._base_stats = dict(zip(
+            STAT_NAMES,
+            (
+                hp,
+                attack,
+                defense,
+                special_attack,
+                special_defense,
+                speed,
+            ),
+        ))
         self.nickname = nickname
         self.ability = ability
         self.hp = hp + logic.base_hp_increase + training["hp"]
@@ -177,6 +188,61 @@ class Pokemon:
             "item": self.get_item(),
             "moveset": tuple(move.name for move in self._moveset),
         }
+
+    @property
+    def base_stats(self) -> Mapping[str, int]:
+        """Return the configured base stats without exposing mutable state."""
+        return MappingProxyType(self._base_stats)
+
+    def set_bases(self, bases: Mapping[str, int]) -> None:
+        """Change selected base stats and recalculate their battle stats.
+
+        Base values must be positive integers keyed by one or more of ``hp``,
+        ``attack``, ``defense``, ``special_attack``, ``special_defense``, and
+        ``speed``. The affected battle stats are recalculated using this
+        Pokémon's battle logic, stat training, nature, and any existing stat
+        stages. This changes only the base stats; roster identity, types,
+        moves, items, and abilities are not changed.
+        """
+        if not isinstance(bases, Mapping) or not bases:
+            raise ValueError("bases must be a non-empty mapping")
+        unknown = set(bases) - set(STAT_NAMES)
+        if unknown:
+            raise ValueError(
+                f"bases contains unknown stat(s): {', '.join(sorted(unknown))}"
+            )
+        if any(type(value) is not int or value <= 0 for value in bases.values()):
+            raise ValueError("base stats must be positive integers")
+
+        updated_bases = {**self._base_stats, **bases}
+        self._base_stats = updated_bases
+        nature_stats = (
+            NATURES[self.nature] if self.nature is not None else (None, None)
+        )
+
+        for stat in bases:
+            base_increase = (
+                self._logic.base_hp_increase
+                if stat == "hp"
+                else self._logic.base_stat_increase
+            )
+            value = (
+                self._base_stats[stat]
+                + base_increase
+                + self._stat_training[stat]
+            )
+            raised, lowered = nature_stats
+            if raised != lowered and stat == raised:
+                value = value * 11 // 10
+            elif raised != lowered and stat == lowered:
+                value = value * 9 // 10
+
+            if stat != "hp":
+                self._pre_stage_stats[stat] = value
+                stage = self._stat_stages.get(stat, 0)
+                numerator, denominator = self._logic.stat_stage_multipliers[stage]
+                value = value * numerator // denominator
+            setattr(self, stat, value)
 
     def set_stats(self, stats: Mapping[str, int]) -> None:
         """Set selected current stats to exact values.

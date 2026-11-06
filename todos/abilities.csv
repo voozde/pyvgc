@@ -1,0 +1,216 @@
+﻿Ability,Description,Implemented in in-game logic?
+Adaptability,Increases the same-type attack bonus from 1.5× to 2×.,No
+Aerilate,Turns the bearer's Normal moves into Flying moves and strengthens them to 1.3× their power.,No
+Aftermath,Damages the attacker for 1/4 its max HP when knocked out by a contact move.,No
+Analytic,Strengthens moves to 1.3× their power when moving last.,No
+Anger Point,Raises Attack to the maximum of six stages upon receiving a critical hit.,No
+Anticipation,"Notifies all trainers upon entering battle if an opponent has a super-effective move, Self-Destruct, Explosion, or a one-hit KO move.",No
+Armor Tail,"Prevents the opponent from using any moves that have priority, such as Quick Attack.",No
+Aroma Veil,Protects allies against moves that affect their mental state.,No
+Aura Guard,A Pokémon with Aura Guard takes half damage from moves that make contact.,No
+Battle Armor,Protects against critical hits.,No
+Berserk,Raises this Pokémon's Special Attack by one stage every time its HP drops below half.,No
+Big Pecks,Protects against Defense drops.,No
+Blaze,Strengthens Fire moves to inflict 1.5× damage at 1/3 max HP or less.,No
+Bulletproof,"Protects against bullet, ball, and bomb-based moves.",No
+Cheek Pouch,"Restores HP upon eating a Berry, in addition to the Berry's effect.",No
+Chlorophyll,Doubles Speed during strong sunlight.,No
+Clear Body,Prevents stats from being lowered by other Pokémon.,No
+Cloud Nine,"Negates all effects of weather, but does not prevent the weather itself.",No
+Competitive,Raises Special Attack by two stages upon having any stat lowered.,No
+Compound Eyes,Increases moves' accuracy to 1.3×.,No
+Contrary,Inverts stat changes.,No
+Corrosion,This Pokémon can inflict poison on Poison and Steel Pokémon.,No
+Cud Chew,Causes the Pokémon to reuse an already consumed Berry at the end of the next turn.,No
+Curious Medicine,Resets all stat changes upon entering battlefield.,No
+Cursed Body,Has a 30% chance of Disabling any move that hits the Pokémon.,No
+Cute Charm,Has a 30% chance of infatuating attacking Pokémon on contact.,No
+Damp,"Prevents Self-Destruct, Explosion, and Aftermath from working while the Pokémon is in battle.",No
+Defiant,Raises Attack two stages upon having any stat lowered.,No
+Disguise,Prevents the first instance of battle damage.,No
+Dragonize,The Pokémon's Normal-type moves become Dragon-type moves and their power is boosted by 20%.,No
+Drizzle,Summons rain that lasts indefinitely upon entering battle.,No
+Drought,Summons strong sunlight that lasts indefinitely upon entering battle.,No
+Dry Skin,"Causes 1/8 max HP in damage each turn during strong sunlight, but heals for 1/8 max HP during rain.  Increases damage from Fire moves to 1.25×, but absorbs Water moves, healing for 1/4 max HP.",No
+Early Bird,Makes sleep pass twice as quickly.,No
+Earth Eater,Restores HP when hit by a Ground-type move.,No
+Eelevate,"The Pokémon floats off the ground, making it immune to Ground-type moves, as well as the Spikes, Toxic Spikes, and Sticky Web statuses. When the Pokémon knocks out a target with an attack, its highest stat is boosted by 1 stage.",No
+Effect Spore,"Has a 30% chance of inflcting either paralysis, poison, or sleep on attacking Pokémon on contact.",No
+Electric Surge,"When this Pokémon enters battle, it changes the terrain to Electric Terrain.",No
+Electromorphosis,"When hit by an attack, the power of the next Electric-type move it uses is doubled.",No
+Emergency Exit,This Pokémon automatically switches out when its HP drops below half.,No
+Fairy Aura,Strengthens Fairy moves to 1.33× their power for all friendly and opposing Pokémon.,No
+Filter,Decreases damage taken from super-effective moves by 1/4.,No
+Fire Mane,Boosts the power of the Pokémon's Fire-type moves by 50%.,No
+Flame Body,Has a 30% chance of burning attacking Pokémon on contact.,No
+Flash Fire,"Protects against Fire moves.  Once one has been blocked, the Pokémon's own Fire moves inflict 1.5× damage until it leaves battle.",No
+Flower Veil,Protects friendly Grass Pokémon from having their stats lowered by other Pokémon.,No
+Fluffy,Damage from contact moves is halved.  Damage from Fire moves is doubled.,No
+Forecast,Changes Castform's type and form to match the weather.,No
+Forewarn,Reveals the opponents' strongest move upon entering battle.,No
+Friend Guard,Decreases all direct damage taken by friendly Pokémon to 0.75×.,No
+Frisk,Reveals an opponent's held item upon entering battle.,No
+Fur Coat,Halves damage from physical attacks.,No
+Gale Wings,Raises Flying moves' priority by one stage.,No
+Gluttony,Makes the Pokémon eat any held Berry triggered by low HP below 1/2 its max HP.,No
+Good As Gold,Gives immunity to status moves.,No
+Gooey,Lowers attacking Pokémon's Speed by one stage on contact.,No
+Grass Pelt,Boosts Defense while Grassy Terrain is in effect.,No
+Grassy Surge,"When this Pokémon enters battle, it changes the terrain to Grassy Terrain.",No
+Guard Dog,"Boosts Attack if intimidated, and prevents being forced to switch out.",No
+Guts,Increases Attack to 1.5× with a major status ailment.,No
+Harvest,Has a 50% chance of restoring a used Berry after each turn if the Pokémon has held no items in the meantime.,No
+Healer,Has a 30% chance of curing each adjacent ally of any major status ailment after each turn.,No
+Heatproof,Halves damage from Fire moves and burns.,No
+Heavy Metal,Doubles the Pokémon's weight.,No
+Hospitality,"When a Pokémon with Hospitality enters a battle, it restores HP for an ally by 25%.",No
+Huge Power,Doubles Attack in battle.,No
+Hunger Switch,"Causes Morpeko to change its form each turn, alternating between Full Belly Mode and Hangry Mode",No
+Hustle,"Strengthens physical moves to inflict 1.5× damage, but decreases their accuracy to 0.8×.",No
+Hydration,Cures any major status ailment after each turn during rain.,No
+Hyper Cutter,Prevents Attack from being lowered by other Pokémon.,No
+Ice Body,Heals for 1/16 max HP after each turn during hail.  Protects against hail damage.,No
+Illuminate,Doubles the wild encounter rate.,No
+Illusion,Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move.,No
+Immunity,Prevents poison.,No
+Imposter,Transforms upon entering battle.,No
+Infiltrator,"Bypasses Light Screen, Reflect, and Safeguard.",No
+Innards Out,"When this Pokémon faints from an opponent's move, that opponent takes damage equal to the HP this Pokémon had remaining.",No
+Inner Focus,Prevents flinching.,No
+Insomnia,Prevents sleep.,No
+Intimidate,Lowers opponents' Attack one stage upon entering battle.,No
+Iron Fist,Strengthens punch-based moves to 1.2× their power.,No
+Justified,Raises Attack one stage upon taking damage from a Dark move.,No
+Keen Eye,Prevents accuracy from being lowered.,No
+Klutz,Prevents the Pokémon from using its held item in battle.,No
+Leaf Guard,Protects against major status ailments during strong sunlight.,No
+Levitate,Evades Ground moves.,No
+Libero,Libero changes the Pokémon's type to that of its previously used attack.,No
+Light Metal,Halves the Pokémon's weight.,No
+Lightning Rod,"Redirects single-target Electric moves to this Pokémon where possible.  Absorbs Electric moves, raising Special Attack one stage.",No
+Limber,Prevents paralysis.,No
+Liquid Ooze,Damages opponents using leeching moves for as much as they would heal.,No
+Liquid Voice,Sound-based moves become Water-type.,No
+Long Reach,This Pokémon's moves do not make contact.,No
+Magic Bounce,Reflects most non-damaging moves back at their user.,No
+Magic Guard,Protects against damage not directly caused by a move.,No
+Magician,Steals the target's held item when the bearer uses a damaging move.,No
+Magma Armor,Prevents freezing.,No
+Marvel Scale,Increases Defense to 1.5× with a major status ailment.,No
+Mega Launcher,Strengthens aura and pulse moves to 1.5× their power.,No
+Mega Sol,The Pokémon can use its moves as if the weather were harsh sunlight.,No
+Merciless,This Pokémon's moves critical hit against poisoned targets.,No
+Mimicry,Changes type depending on the terrain.,No
+Minus,Increases Special Attack to 1.5× when a friendly Pokémon has Plus or Minus.,No
+Mirror Armor,Reflects any stat-lowering effects.,No
+Mold Breaker,Bypasses targets' abilities if they could hinder or prevent a move.,No
+Moody,Raises a random stat two stages and lowers another one stage after each turn.,No
+Motor Drive,"Absorbs Electric moves, raising Speed one stage.",No
+Moxie,Raises Attack one stage upon KOing a Pokémon.,No
+Multiscale,Halves damage taken from full HP.,No
+Mummy,Changes attacking Pokémon's abilities to Mummy on contact.,No
+Natural Cure,Cures any major status ailment upon switching out.,No
+No Guard,Ensures all moves used by and against the Pokémon hit.,No
+Oblivious,Prevents infatuation and protects against Captivate.,No
+Opportunist,Copies stat boosts by the opponent.,No
+Overcoat,Protects against damage from weather.,No
+Overgrow,Strengthens Grass moves to inflict 1.5× damage at 1/3 max HP or less.,No
+Own Tempo,Prevents confusion.,No
+Parental Bond,Lets the bearer hit twice with damaging moves.  The second hit has half power.,No
+Pickpocket,Steals attacking Pokémon's held items on contact.,No
+Pickup,Picks up other Pokémon's used and Flung held items.  May also pick up an item after battle.,No
+Piercing Drill,"When the Pokémon uses contact moves, it can hit even targets that are protecting themselves.",No
+Pixilate,Turns the bearer's Normal moves into Fairy moves and strengthens them to 1.3× their power.,No
+Plus,Increases Special Attack to 1.5× when a friendly Pokémon has Plus or Minus.,No
+Poison Heal,Heals for 1/8 max HP after each turn when poisoned in place of damage.,No
+Poison Point,Has a 30% chance of poisoning attacking Pokémon on contact.,No
+Poison Touch,Has a 30% chance of poisoning target Pokémon upon contact.,No
+Prankster,Raises non-damaging moves' priority by one stage.,No
+Pressure,Increases the PP cost of moves targetting the Pokémon by one.,No
+Protean,Changes the bearer's type to match each move it uses.,No
+Psychic Surge,"When this Pokémon enters battle, it changes the terrain to Psychic Terrain.",No
+Punk Rock,Boosts sound-based moves and halves damage from the same moves.,No
+Pure Power,Doubles Attack in battle.,No
+Purifying Salt,Protects from status conditions and halves damage from Ghost-type moves.,No
+Queenly Majesty,Opposing Pokémon cannot use priority attacks.,No
+Quick Draw,Enables the Pokémon to move first occasionally.,No
+Quick Feet,Increases Speed to 1.5× with a major status ailment.,No
+Rain Dish,Heals for 1/16 max HP after each turn during rain.,No
+Rattled,"Raises Speed one stage upon being hit by a Dark, Ghost, or Bug move.",No
+Receiver,"When an ally faints, this Pokémon gains its Ability.",No
+Reckless,Strengthens recoil moves to 1.2× their power.,No
+Refrigerate,Turns the bearer's Normal moves into Ice moves and strengthens them to 1.3× their power.,No
+Regenerator,Heals for 1/3 max HP upon switching out.,No
+Ripen,Doubles the effect of berries.,No
+Rivalry,"Increases damage inflicted to 1.25× against Pokémon of the same gender, but decreases damage to 0.75× against the opposite gender.",No
+Rock Head,Protects against recoil damage.,No
+Rough Skin,Damages attacking Pokémon for 1/8 their max HP on contact.,No
+Run Away,Ensures success fleeing from wild battles.,No
+Sand Force,"Strengthens Rock, Ground, and Steel moves to 1.3× their power during a sandstorm.  Protects against sandstorm damage.",No
+Sand Rush,Doubles Speed during a sandstorm.  Protects against sandstorm damage.,No
+Sand Spit,Creates a sandstorm when hit by an attack.,No
+Sand Stream,Summons a sandstorm that lasts indefinitely upon entering battle.,No
+Sand Veil,Increases evasion to 1.25× during a sandstorm.  Protects against sandstorm damage.,No
+Sap Sipper,"Absorbs Grass moves, raising Attack one stage.",No
+Scrappy,Lets the Pokémon's Normal and Fighting moves hit Ghost Pokémon.,No
+Screen Cleaner,"Nullifies effects of Light Screen, Reflect, and Aurora Veil.",No
+Seed Sower,Turns the ground into Grassy Terrain when the Pokémon is hit by an attack.,No
+Shadow Tag,Prevents opponents from fleeing or switching out.,No
+Sharpness,Powers up slicing moves.,No
+Shed Skin,Has a 33% chance of curing any major status ailment after each turn.,No
+Sheer Force,"Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects.",No
+Shell Armor,Protects against critical hits.,No
+Shield Dust,Protects against incoming moves' extra effects.,No
+Skill Link,Extends two-to-five-hit moves and Triple Kick to their full length every time.,No
+Slush Rush,"During Hail, this Pokémon has double Speed.",No
+Sniper,Strengthens critical hits to inflict 3× damage rather than 2×.,No
+Snow Cloak,Increases evasion to 1.25× during hail.  Protects against hail damage.,No
+Snow Warning,Summons hail that lasts indefinitely upon entering battle.,No
+Solar Power,Increases Special Attack to 1.5× but costs 1/8 max HP after each turn during strong sunlight.,No
+Solid Rock,Decreases damage taken from super-effective moves by 1/4.,No
+Soundproof,Protects against sound-based moves.,No
+Speed Boost,Raises Speed one stage after each turn.,No
+Spicy Spray,"When the Pokémon takes damage from a move, it burns the attacker.",No
+Stakeout,This Pokémon's moves have double power against Pokémon that switched in this turn.,No
+Stall,Makes the Pokémon move last within its move's priority bracket.,No
+Stalwart,Ignores moves and abilities that draw in moves.,No
+Stamina,Raises this Pokémon's Defense by one stage when it takes damage from a move.,No
+Stance Change,"Changes Aegislash to Blade Forme before using a damaging move, or Shield Forme before using King’s Shield.",No
+Static,Has a 30% chance of paralyzing attacking Pokémon on contact.,No
+Steadfast,Raises Speed one stage upon flinching.,No
+Steely Spirit,Powers up ally Pokémon's Steel-type moves.,No
+Stench,Has a 10% chance of making target Pokémon flinch with each hit.,No
+Sticky Hold,Prevents a held item from being removed by other Pokémon.,No
+Strong Jaw,Strengthens biting moves to 1.5× their power.,No
+Sturdy,"Prevents being KOed from full HP, leaving 1 HP instead.  Protects against the one-hit KO moves regardless of HP.",No
+Suction Cups,Prevents being forced out of battle by other Pokémon's moves.,No
+Super Luck,Raises moves' critical hit rates one stage.,No
+Supersweet Syrup,"Once per battle, when a Pokémon with Supersweet Syrup enters the battle, it lowers the evasion stat of all adjacent opponents by one stage.",No
+Supreme Overlord,Attack and Special Attack are boosted for each party Pokémon that has been defeated.,No
+Surge Surfer,Doubles this Pokémon's Speed on Electric Terrain.,No
+Swarm,Strengthens Bug moves to inflict 1.5× damage at 1/3 max HP or less.,No
+Sweet Veil,Prevents friendly Pokémon from sleeping.,No
+Swift Swim,Doubles Speed during rain.,No
+Symbiosis,Passes the bearer's held item to an ally when the ally uses up its item.,No
+Synchronize,"Copies burns, paralysis, and poison received onto the Pokémon that inflicted them.",No
+Tangled Feet,Doubles evasion when confused.,No
+Technician,Strengthens moves of 60 base power or less to 1.5× their power.,No
+Telepathy,Protects against friendly Pokémon's damaging moves.,No
+Thermal Exchange,Raises Attack when hit by a Fire-type move. Cannot be burned.,No
+Thick Fat,Halves damage from Fire and Ice moves.,No
+Torrent,Strengthens Water moves to inflict 1.5× damage at 1/3 max HP or less.,No
+Tough Claws,Strengthens moves that make contact to 1.33× their power.,No
+Toxic Debris,Scatters poison spikes at the feet of the opposing team when the Pokémon takes damage from physical moves.,No
+Trace,Copies an opponent's ability upon entering battle.,No
+Unaware,Ignores other Pokémon's stat modifiers for damage and accuracy calculation.,No
+Unburden,Doubles Speed upon using or losing a held item.,No
+Unnerve,Prevents opposing Pokémon from eating held Berries.,No
+Unseen Fist,Contact moves can strike through Protect/Detect.,No
+Vital Spirit,Prevents sleep.,No
+Volt Absorb,"Absorbs Electric moves, healing for 1/4 max HP.",No
+Wandering Spirit,Swaps abilities with opponents on contact.,No
+Water Absorb,"Absorbs Water moves, healing for 1/4 max HP.",No
+Water Bubble,"Halves damage from Fire moves, doubles damage of Water moves, and prevents burns.",No
+Weak Armor,Raises Speed and lowers Defense by one stage each upon being hit by a physical move.,No
+White Smoke,Prevents stats from being lowered by other Pokémon.,No
+Zero To Hero,Transforms into its Hero Form when switching out.,No

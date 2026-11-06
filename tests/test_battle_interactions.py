@@ -603,6 +603,71 @@ class BattleInteractionTests(unittest.TestCase):
         self.assertEqual(pokemon.hp, 250)
         self.assertNotIn("attack", pokemon.stat_stages)
 
+    def test_base_stats_can_be_customized_and_battle_stats_recalculated(self):
+        """Custom base stats retain normal logic, training, nature, and stages."""
+        pokemon = Pokemon.load(
+            "Incineroar",
+            nature="Jolly",
+            stat_training={"hp": 4, "attack": 3},
+            stat_stages={"attack": -1},
+        )
+        pokemon.set_bases({
+            "hp": 100,
+            "attack": 100,
+            "special_attack": 100,
+            "speed": 100,
+        })
+
+        self.assertEqual(pokemon.base_stats["hp"], 100)
+        self.assertEqual(pokemon.base_stats["attack"], 100)
+        self.assertEqual(pokemon.hp, 179)
+        self.assertEqual(pokemon.attack, 82)
+        self.assertEqual(pokemon.special_attack, 108)
+        self.assertEqual(pokemon.speed, 132)
+        self.assertEqual(pokemon.stat_stages["attack"], -1)
+
+    def test_all_base_stats_can_be_set_for_a_customized_pokemon(self):
+        """A loaded Pokémon can be customized with all six base stats."""
+        pokemon = Pokemon.load("Incineroar", nickname="Custom Incineroar")
+        pokemon.set_bases(dict.fromkeys((
+            "hp",
+            "attack",
+            "defense",
+            "special_attack",
+            "special_defense",
+            "speed",
+        ), 100))
+
+        self.assertEqual(dict(pokemon.base_stats), {
+            "hp": 100,
+            "attack": 100,
+            "defense": 100,
+            "special_attack": 100,
+            "special_defense": 100,
+            "speed": 100,
+        })
+        self.assertEqual(pokemon.hp, 175)
+        self.assertEqual(
+            (
+                pokemon.attack,
+                pokemon.defense,
+                pokemon.special_attack,
+                pokemon.special_defense,
+                pokemon.speed,
+            ),
+            (120, 120, 120, 120, 120),
+        )
+        self.assertEqual(pokemon.nickname, "Custom Incineroar")
+
+    def test_custom_base_stats_validate_input(self):
+        """Custom base-stat assignments reject empty, invalid, and nonpositive values."""
+        pokemon = Pokemon.load("Incineroar")
+
+        for bases in ({}, {"accuracy": 100}, {"attack": 0}, {"attack": True}):
+            with self.subTest(bases=bases):
+                with self.assertRaises(ValueError):
+                    pokemon.set_bases(bases)
+
     def test_direct_stat_assignments_validate_input(self):
         """Direct stat assignments reject malformed values and names."""
         pokemon = Pokemon.load("Incineroar")
